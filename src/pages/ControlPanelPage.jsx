@@ -25,7 +25,7 @@ function chunkControllers(controllers, rowSize) {
 
 function ControllerButtonRow({ controllers, active, onSelect }) {
   return (
-    <div className="flex flex-nowrap gap-2">
+    <div className="flex flex-wrap gap-2">
       {controllers.map((entry) => {
         const isActive =
           active?.category === entry.category && active?.id === entry.id;
@@ -95,7 +95,7 @@ export default function ControlPanelPage() {
                       {groupControllers.length === 0 ? (
                         <p className="control-panel-empty">No controllers yet</p>
                       ) : (
-                        <div className="overflow-x-auto">
+                        <div>
                           <ControllerButtonRow
                             controllers={groupControllers}
                             active={active}
@@ -107,7 +107,7 @@ export default function ControlPanelPage() {
                   ))}
                 </div>
               ) : (
-                <div className="flex flex-col gap-2 overflow-x-auto">
+                <div className="flex flex-col gap-2">
                   {rows.map((row, rowIndex) => (
                     <ControllerButtonRow
                       key={`${category}-row-${rowIndex}`}
