@@ -4,7 +4,7 @@ import { fourConfig } from "../../LowerThird/config/four.config.js";
 
 /**
  * Four — isolated lower-third controller.
- * Boundary celebration with three looping "Four" labels.
+ * Boundary celebration with four looping "Four" labels.
  *
  * @param {Object} match
  * @param {Object} [config] - Runtime overrides merged onto fourConfig

@@ -94,59 +94,32 @@ module.exports = {
           "0%": { transform: "translateX(-120%)" },
           "100%": { transform: "translateX(120%)" },
         },
-        fourRise: {
+        actionTextShadow: {
           "0%": {
-            transform: "translateY(130%) scale(0.78) rotate(-3deg)",
-            opacity: "0",
-            filter: "blur(4px)",
+            transform: "translateY(0)",
+            textShadow:
+              "0 0 0 #0c2ffb, 0 0 0 #2cfcfd, 0 0 0 #fb203b, 0 0 0 #fefc4b",
           },
-          "14%": {
-            transform: "translateY(0%) scale(1.14) rotate(0deg)",
-            opacity: "1",
-            filter: "blur(0)",
+          "20%": {
+            transform: "translateY(-1em)",
+            textShadow:
+              "0 0.125em 0 #0c2ffb, 0 0.25em 0 #2cfcfd, 0 -0.125em 0 #fb203b, 0 -0.25em 0 #fefc4b",
           },
-          "24%": {
-            transform: "translateY(0%) scale(0.96) rotate(0deg)",
-            opacity: "1",
-            filter: "blur(0)",
+          "40%": {
+            transform: "translateY(0.5em)",
+            textShadow:
+              "0 -0.0625em 0 #0c2ffb, 0 -0.125em 0 #2cfcfd, 0 0.0625em 0 #fb203b, 0 0.125em 0 #fefc4b",
           },
-          "36%": {
-            transform: "translateY(0%) scale(1.1) rotate(0deg)",
-            opacity: "1",
-            filter: "blur(0)",
+          "60%": {
+            transform: "translateY(-0.25em)",
+            textShadow:
+              "0 0.03125em 0 #0c2ffb, 0 0.0625em 0 #2cfcfd, 0 -0.03125em 0 #fb203b, 0 -0.0625em 0 #fefc4b",
           },
-          "48%": {
-            transform: "translateY(0%) scale(0.98) rotate(0deg)",
-            opacity: "1",
-            filter: "blur(0)",
+          "80%": {
+            transform: "translateY(0)",
+            textShadow:
+              "0 0 0 #0c2ffb, 0 0 0 #2cfcfd, 0 0 0 #fb203b, 0 0 0 #fefc4b",
           },
-          "58%": {
-            transform: "translateY(0%) scale(1.04) rotate(0deg)",
-            opacity: "1",
-            filter: "blur(0)",
-          },
-          "64%": {
-            transform: "translateY(0%) scale(1) rotate(0deg)",
-            opacity: "1",
-            filter: "blur(0)",
-          },
-          "84%": {
-            transform: "translateY(-130%) scale(0.82) rotate(2deg)",
-            opacity: "0",
-            filter: "blur(3px)",
-          },
-          "100%": {
-            transform: "translateY(-130%) scale(0.78) rotate(2deg)",
-            opacity: "0",
-            filter: "blur(4px)",
-          },
-        },
-        fourBarPulse: {
-          "0%, 100%": { opacity: "0.12" },
-          "20%": { opacity: "0.32" },
-          "40%": { opacity: "0.16" },
-          "55%": { opacity: "0.38" },
-          "75%": { opacity: "0.14" },
         },
         chartWormDraw: {
           to: { strokeDashoffset: "0" },
@@ -167,10 +140,8 @@ module.exports = {
       animation: {
         "score-pop": "scorePop 320ms cubic-bezier(0.22,1,0.36,1)",
         shine: "shine 6s ease-in-out infinite",
-        "four-rise":
-          "fourRise 3.6s cubic-bezier(0.33, 1, 0.32, 1) infinite both",
-        "four-bar-pulse":
-          "fourBarPulse 3.6s ease-in-out infinite both",
+        "action-text-shadow":
+          "actionTextShadow 1.5s ease-in-out infinite",
         "chart-worm":
           "chartWormDraw 1.1s cubic-bezier(0.2, 0.9, 0.2, 1) forwards",
         "chart-bar-grow":

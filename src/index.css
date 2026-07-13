@@ -2387,17 +2387,17 @@
 
   .ctrl-t-four-label {
     @apply font-controller font-bold;
-    font-size: calc(56px * var(--cs));
+    font-size: calc(72px * var(--cs));
     letter-spacing: calc(2px * var(--cs));
-    will-change: transform, opacity, filter;
+    will-change: transform, text-shadow;
   }
 
   .ctrl-t-four-label-sm {
     @apply font-controller font-bold;
-    font-size: calc(28px * var(--cs));
+    font-size: calc(36px * var(--cs));
     letter-spacing: calc(1px * var(--cs));
     line-height: 1.1;
-    will-change: transform, opacity, filter;
+    will-change: transform, text-shadow;
   }
 
   .ctrl-t-last-wicket-howout {
