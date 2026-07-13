@@ -1069,6 +1069,8 @@
   /* Full-screen Partnership List */
   .pl-fs-page {
     @apply absolute inset-0 overflow-hidden bg-panel-player;
+    --pl-fs-left: #9c0028;
+    --pl-fs-right: #ffffff;
   }
 
   .pl-fs-inner {
@@ -1165,22 +1167,18 @@
     border-radius: calc(3px * var(--cs));
   }
 
-  .pl-fs-swatch--left,
-  .pl-fs-runs--left {
-    color: #6eb6ff;
+  .pl-fs-runs--left,
+  .pl-fs-runs--right {
+    @apply text-white;
   }
 
   .pl-fs-swatch--left {
-    background: #6eb6ff;
-  }
-
-  .pl-fs-swatch--right,
-  .pl-fs-runs--right {
-    color: #e0c05a;
+    background: var(--pl-fs-left);
   }
 
   .pl-fs-swatch--right {
-    background: #e0c05a;
+    background: var(--pl-fs-right);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
   }
 
   .pl-fs-bar-wrap {
@@ -1191,7 +1189,7 @@
     @apply relative flex w-full items-stretch overflow-hidden;
     height: calc(42px * var(--cs));
     border-radius: calc(10px * var(--cs));
-    background: #3d7eb8;
+    background: var(--pl-fs-left);
   }
 
   .pl-fs-bar-seg {
@@ -1201,12 +1199,12 @@
 
   .pl-fs-bar-seg--left {
     @apply justify-start;
-    background: #3d7eb8;
+    background: var(--pl-fs-left);
   }
 
   .pl-fs-bar-seg--right {
     @apply justify-end;
-    background: #e0c05a;
+    background: var(--pl-fs-right);
   }
 
   .pl-fs-bar-badge {
@@ -1219,13 +1217,13 @@
   }
 
   .ctrl-t-pl-fs-bar-val {
-    @apply font-controller font-bold;
+    @apply font-controller font-bold text-white;
     font-size: calc(18px * var(--cs));
     line-height: 1;
   }
 
   .pl-fs-bar-seg--right .ctrl-t-pl-fs-bar-val {
-    color: #1a1200;
+    color: #2e0a1a;
   }
 
   .ctrl-t-pl-fs-bar-total {
@@ -1318,9 +1316,10 @@
   }
 
   .need-fs-card {
-    @apply relative flex w-full flex-col items-center overflow-hidden;
-    gap: calc(36px * var(--cs));
-    padding: calc(40px * var(--cs)) calc(56px * var(--cs)) calc(56px * var(--cs));
+    @apply relative flex w-full flex-col items-center justify-center overflow-hidden;
+    min-height: calc(520px * var(--cs));
+    gap: calc(48px * var(--cs));
+    padding: calc(56px * var(--cs)) calc(56px * var(--cs)) calc(72px * var(--cs));
     border-radius: calc(14px * var(--cs));
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 0 calc(40px * var(--cs)) rgba(0, 0, 0, 0.35);
@@ -1751,6 +1750,7 @@
   .bs-fs-header {
     @apply flex shrink-0 items-center;
     gap: calc(14px * var(--cs));
+    margin-bottom: calc(28px * var(--cs));
   }
 
   .bs-fs-logo {
@@ -2210,23 +2210,23 @@
     padding-right: calc(48px * var(--cs));
   }
 
-  /* Tour-Hit mini badge — sits above the ThisOver main bar */
+  /* Tour-Hit mini badge — same bar height as other controllers; sits above main bar */
   .tour-hit-mini-offset {
     margin-bottom: calc(12px * var(--cs));
   }
 
   .tour-hit-mini {
     @apply flex w-max max-w-full shrink-0 items-center bg-panel-player;
-    height: calc(96px * var(--cs));
-    gap: calc(20px * var(--cs));
-    padding-left: calc(16px * var(--cs));
-    padding-right: calc(28px * var(--cs));
+    height: calc(139px * var(--cs));
+    gap: calc(28px * var(--cs));
+    padding-left: calc(24px * var(--cs));
+    padding-right: calc(40px * var(--cs));
   }
 
   .tour-hit-mini-logo {
     @apply flex shrink-0 items-center justify-center overflow-hidden bg-black;
-    height: calc(64px * var(--cs));
-    width: calc(64px * var(--cs));
+    height: calc(84px * var(--cs));
+    width: calc(84px * var(--cs));
   }
 
   .tour-hit-mini-divider {
@@ -2235,25 +2235,25 @@
 
   .ctrl-t-tour-hit-logo {
     @apply font-controller;
-    font-size: calc(22px * var(--cs));
+    font-size: calc(24px * var(--cs));
     letter-spacing: calc(1px * var(--cs));
   }
 
   .ctrl-t-tour-hit-eyebrow {
     @apply font-controller font-semibold;
-    font-size: calc(14px * var(--cs));
+    font-size: calc(16px * var(--cs));
     letter-spacing: calc(1.5px * var(--cs));
   }
 
   .ctrl-t-tour-hit-title {
     @apply font-controller font-bold;
-    font-size: calc(28px * var(--cs));
+    font-size: calc(32px * var(--cs));
     letter-spacing: calc(1px * var(--cs));
   }
 
   .ctrl-t-tour-hit-value {
     @apply font-controller font-bold;
-    font-size: calc(44px * var(--cs));
+    font-size: calc(56px * var(--cs));
     letter-spacing: calc(0.5px * var(--cs));
   }
 

@@ -51,7 +51,7 @@ export default function TourHitMiniScorecard({
         className="ctrl-divider-w flex h-full shrink-0 items-center justify-center self-stretch"
         aria-hidden="true"
       >
-        <div className="tour-hit-mini-divider h-[calc(56px*var(--cs))] w-px" />
+        <div className="tour-hit-mini-divider h-divider w-px" />
       </div>
 
       <span className="ctrl-t-tour-hit-value shrink-0 tabular-nums text-white">
