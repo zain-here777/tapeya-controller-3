@@ -4,7 +4,7 @@ import { atStageConfig } from "../../LowerThird/config/atStage.config.js";
 
 /**
  * AtStage — isolated lower-third controller.
- * Same full scorecard UI as Default, without the CRR/stat section.
+ * Same UI as CurrentPartnership (widened panel + title/stat columns).
  *
  * @param {import("../../LowerThird/data/match.types.js").MatchData} match
  * @param {Object} [config] - Runtime overrides merged onto atStageConfig

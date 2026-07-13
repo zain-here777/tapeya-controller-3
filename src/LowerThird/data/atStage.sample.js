@@ -38,14 +38,27 @@ const atStageSample = {
     },
   ],
 
-  featuredPlayer: {
-    id: "f1",
-    name: "FAHEEM",
-    role: "bowler",
-    wickets: 0,
-    runs: 9,
-    overs: "1.0",
-    overBalls: ["dot", "dot", 4, 1, "dot", 4],
+  atStage: {
+    titleLine1: "AT THIS",
+    titleLine2: "STAGE",
+    showLeadingDivider: true,
+    showTrailingDivider: true,
+    teams: [
+      {
+        id: "stage-a",
+        code: "SOK",
+        runs: 105,
+        wickets: 0,
+        overs: "4.5",
+      },
+      {
+        id: "stage-b",
+        code: "FCM",
+        runs: 96,
+        wickets: 3,
+        overs: "4.5",
+      },
+    ],
   },
 };
 

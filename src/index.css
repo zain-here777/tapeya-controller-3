@@ -2257,6 +2257,24 @@
     letter-spacing: calc(0.5px * var(--cs));
   }
 
+  .match-summary-stack {
+    @apply flex w-full flex-col items-center;
+    gap: calc(5px * var(--cs));
+  }
+
+  .match-summary-caption {
+    @apply flex shrink-0 items-center justify-center bg-black;
+    max-width: 100%;
+    min-height: calc(48px * var(--cs));
+    padding-block: calc(10px * var(--cs));
+    padding-inline: calc(36px * var(--cs));
+    border-radius: calc(999px * var(--cs));
+  }
+
+  .match-summary-shell {
+    @apply w-full self-stretch;
+  }
+
   .match-summary-shell::before,
   .match-summary-shell::after {
     content: "";
@@ -2271,8 +2289,67 @@
     @apply right-0 bg-bowler-panel;
   }
 
+  .match-summary-mid {
+    @apply relative z-[1] grid min-w-0 flex-1 items-center;
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto
+      calc(128px * var(--cs))
+      auto
+      minmax(0, 1fr);
+    column-gap: calc(28px * var(--cs));
+    padding-inline: calc(28px * var(--cs));
+  }
+
+  /* IntroLT / matchup-only — team | VS | team */
+  .match-summary-mid--intro {
+    grid-template-columns:
+      minmax(0, 1fr)
+      calc(128px * var(--cs))
+      minmax(0, 1fr);
+  }
+
+  .match-summary-team-a {
+    grid-column: 1;
+    @apply flex min-w-0 items-center self-center;
+  }
+
+  .match-summary-score-a {
+    grid-column: 2;
+    @apply flex items-center self-center;
+  }
+
+  .match-summary-score-b {
+    grid-column: 4;
+    @apply flex items-center self-center;
+  }
+
+  .match-summary-team-b {
+    grid-column: 5;
+    @apply flex min-w-0 items-center justify-end self-center;
+  }
+
+  .match-summary-mid--intro .match-summary-team-a {
+    @apply justify-end;
+  }
+
+  .match-summary-mid--intro .summary-vs-box {
+    grid-column: 2;
+  }
+
+  .match-summary-mid--intro .match-summary-team-b {
+    grid-column: 3;
+    @apply justify-start;
+  }
+
+  .summary-vs-box {
+    grid-column: 3;
+    @apply z-[1] flex h-full items-center justify-center self-stretch bg-black;
+    width: calc(128px * var(--cs));
+  }
+
   .ctrl-t-summary-team {
-    @apply flex-1 font-controller font-bold;
+    @apply font-controller font-bold;
     font-size: calc(30px * var(--cs));
     letter-spacing: calc(0.3px * var(--cs));
   }
@@ -2280,12 +2357,14 @@
   .ctrl-t-summary-vs {
     @apply font-controller font-semibold;
     font-size: calc(36px * var(--cs));
+    line-height: 1;
   }
 
   .ctrl-t-summary-title {
     @apply font-controller font-bold;
-    font-size: calc(24px * var(--cs));
+    font-size: calc(22px * var(--cs));
     letter-spacing: calc(2px * var(--cs));
+    line-height: 1.1;
   }
 
   .ctrl-t-tournament-name {
@@ -2662,6 +2741,28 @@
     font-family: "Saira Condensed", sans-serif;
     font-size: calc(44px * var(--cs));
     font-weight: 700;
+  }
+
+  .ctrl-t-at-stage-team {
+    @apply font-controller font-bold;
+    font-size: calc(22px * var(--cs));
+    letter-spacing: calc(0.5px * var(--cs));
+    line-height: 1.1;
+  }
+
+  .ctrl-t-at-stage-score {
+    font-family: "Saira Condensed", sans-serif;
+    font-size: calc(44px * var(--cs));
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .ctrl-t-at-stage-overs {
+    @apply font-controller font-bold;
+    font-size: calc(22px * var(--cs));
+    letter-spacing: calc(0.4px * var(--cs));
+    line-height: 1;
+    padding-bottom: calc(4px * var(--cs));
   }
 
   .ctrl-last12-ball {

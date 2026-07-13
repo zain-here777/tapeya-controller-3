@@ -3,7 +3,8 @@ import { mergeControllerConfig } from "../config/mergeControllerConfig.js";
 import TeamCrest from "../components/TeamCrest.jsx";
 
 /**
- * ResultLT lower third — TournamentName shell with matchup + result.
+ * ResultLT lower third — result pill above bar; team matchup with VS below.
+ * Same UI shell as IntroLT / TossLT / MatchSummary.
  *
  * @param {Object} props
  * @param {Object} props.match
@@ -23,28 +24,30 @@ export default function ResultLTLowerThird({
 
   return (
     <div className="controller-scaled relative w-full shrink-0 overflow-hidden font-controller select-none">
-      <div className="mb-[calc(45px*var(--cs))] w-full px-[calc(210px*var(--cs))]">
+      <div className="match-summary-stack mb-[calc(45px*var(--cs))] w-full px-[calc(210px*var(--cs))]">
+        {result ? (
+          <div className="match-summary-caption">
+            <span className="ctrl-t-summary-title uppercase text-white">
+              {result}
+            </span>
+          </div>
+        ) : null}
+
         <div className="match-summary-shell relative flex h-bar w-full items-stretch overflow-hidden">
           <ResultLogoSlot team={teamA} separator="right" />
 
-          <div className="relative z-[1] flex min-w-0 flex-1 flex-col bg-transparent">
-            <div className="grid min-h-0 flex-1 grid-cols-[1fr_auto_1fr] items-center gap-x-[calc(24px*var(--cs))] bg-transparent px-[calc(28px*var(--cs))]">
-              <span className="ctrl-t-summary-team flex-none justify-self-end whitespace-nowrap uppercase text-white">
-                {teamA.name}
-              </span>
-              <span className="ctrl-t-summary-vs lowercase text-white">vs</span>
-              <span className="ctrl-t-summary-team flex-none justify-self-start whitespace-nowrap uppercase text-white">
-                {teamB.name}
-              </span>
-            </div>
+          <div className="match-summary-mid match-summary-mid--intro">
+            <span className="ctrl-t-summary-team match-summary-team-a min-w-0 truncate text-right uppercase text-white">
+              {teamA.name}
+            </span>
 
-            {result ? (
-              <div className="flex h-[calc(56px*var(--cs))] shrink-0 items-center justify-center border-t border-divider bg-transparent px-[calc(28px*var(--cs))]">
-                <span className="ctrl-t-summary-title uppercase text-white">
-                  {result}
-                </span>
-              </div>
-            ) : null}
+            <span className="summary-vs-box">
+              <span className="ctrl-t-summary-vs uppercase text-white">VS</span>
+            </span>
+
+            <span className="ctrl-t-summary-team match-summary-team-b min-w-0 truncate uppercase text-white">
+              {teamB.name}
+            </span>
           </div>
 
           <ResultLogoSlot team={teamB} separator="left" />

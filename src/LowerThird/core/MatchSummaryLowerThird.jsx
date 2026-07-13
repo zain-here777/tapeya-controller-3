@@ -3,7 +3,7 @@ import { mergeControllerConfig } from "../config/mergeControllerConfig.js";
 import TeamCrest from "../components/TeamCrest.jsx";
 
 /**
- * Match summary lower third — team logos, scores, overs, and title strip.
+ * Match summary lower third — title pill above bar; teams, scores, and VS below.
  * Layout uses Tailwind v3 utilities; scaled sizes use --cs via arbitrary values.
  *
  * @param {Object} props
@@ -24,42 +24,42 @@ export default function MatchSummaryLowerThird({
 
   return (
     <div className="controller-scaled relative w-full shrink-0 overflow-hidden font-controller select-none">
-      <div className="mb-[calc(45px*var(--cs))] w-full px-[calc(210px*var(--cs))]">
+      <div className="match-summary-stack mb-[calc(45px*var(--cs))] w-full px-[calc(210px*var(--cs))]">
+        <div className="match-summary-caption">
+          <span className="ctrl-t-summary-title uppercase text-white">{title}</span>
+        </div>
+
         <div className="match-summary-shell relative flex h-bar w-full items-stretch overflow-hidden">
           <SummaryLogoSlot team={teamA} separator="right" />
 
-          <div className="relative z-[1] flex min-w-0 flex-1 flex-col bg-transparent">
-            <div className="flex min-h-0 flex-1 items-center gap-[calc(24px*var(--cs))] bg-transparent px-[calc(28px*var(--cs))]">
-              <span className="ctrl-t-summary-team min-w-0 truncate uppercase text-white">
-                {teamA.name}
-              </span>
+          <div className="match-summary-mid">
+            <span className="ctrl-t-summary-team match-summary-team-a min-w-0 truncate uppercase text-white">
+              {teamA.name}
+            </span>
 
-              <div className="flex shrink-0 items-center gap-[calc(32px*var(--cs))]">
-                <SummaryScoreBlock
-                  runs={teamA.runs}
-                  wickets={teamA.wickets}
-                  overs={teamA.overs}
-                />
-
-                <span className="ctrl-t-summary-vs lowercase text-white">vs</span>
-
-                <SummaryScoreBlock
-                  runs={teamB.runs}
-                  wickets={teamB.wickets}
-                  overs={teamB.overs}
-                />
-              </div>
-
-              <span className="ctrl-t-summary-team min-w-0 truncate text-right uppercase text-white">
-                {teamB.name}
-              </span>
+            <div className="match-summary-score-a">
+              <SummaryScoreBlock
+                runs={teamA.runs}
+                wickets={teamA.wickets}
+                overs={teamA.overs}
+              />
             </div>
 
-            <div className="flex h-[calc(56px*var(--cs))] shrink-0 items-center justify-center border-t border-divider bg-transparent">
-              <span className="ctrl-t-summary-title uppercase text-white">
-                {title}
-              </span>
+            <span className="summary-vs-box">
+              <span className="ctrl-t-summary-vs uppercase text-white">VS</span>
+            </span>
+
+            <div className="match-summary-score-b">
+              <SummaryScoreBlock
+                runs={teamB.runs}
+                wickets={teamB.wickets}
+                overs={teamB.overs}
+              />
             </div>
+
+            <span className="ctrl-t-summary-team match-summary-team-b min-w-0 truncate text-right uppercase text-white">
+              {teamB.name}
+            </span>
           </div>
 
           <SummaryLogoSlot team={teamB} separator="left" />

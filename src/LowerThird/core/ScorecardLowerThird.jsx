@@ -32,6 +32,7 @@ export default function ScorecardLowerThird({
             last12Balls={match.last12Balls}
             last30Balls={match.last30Balls}
             currentPartnership={match.currentPartnership}
+            atStage={match.atStage}
             winPrediction={match.winPrediction}
             {...config.bowlerPanel}
           />

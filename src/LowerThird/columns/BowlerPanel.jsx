@@ -2,6 +2,7 @@ import React from "react";
 import FeaturedPlayerCard from "../components/FeaturedPlayerCard";
 import Last12BallsCard from "../components/Last12BallsCard";
 import Last30BallsCard from "../components/Last30BallsCard";
+import AtStageCard from "../components/AtStageCard";
 import TeamCrest from "../components/TeamCrest";
 
 /**
@@ -14,6 +15,7 @@ export default function BowlerPanel({
   last12Balls,
   last30Balls,
   currentPartnership,
+  atStage,
   winPrediction,
   teamCodeClassName = "ctrl-t-team-code ctrl-tracking font-bold uppercase text-white",
   showFullOverBalls = false,
@@ -21,6 +23,7 @@ export default function BowlerPanel({
   showLast12Balls = false,
   showLast30Balls = false,
   showCurrentPartnership = false,
+  showAtStage = false,
   showWinPrediction = false,
   showTeamCrest = true,
 }) {
@@ -31,7 +34,17 @@ export default function BowlerPanel({
     null;
 
   let main = null;
-  if (summaryPanel) {
+  if (showAtStage && atStage) {
+    main = (
+      <AtStageCard
+        titleLine1={atStage.titleLine1}
+        titleLine2={atStage.titleLine2}
+        teams={atStage.teams}
+        showLeadingDivider={atStage.showLeadingDivider}
+        showTrailingDivider={atStage.showTrailingDivider}
+      />
+    );
+  } else if (summaryPanel) {
     main = (
       <Last30BallsCard
         titleLine1={summaryPanel.titleLine1}
