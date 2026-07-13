@@ -1729,19 +1729,19 @@
   }
 
   .bs-fs-inner {
-    @apply relative z-[1] mx-auto flex h-full w-full max-w-[calc(1480px*var(--cs))] flex-col;
+    @apply relative z-[1] mx-auto flex h-full w-full max-w-[calc(1480px*var(--cs))] flex-col justify-center;
     gap: calc(20px * var(--cs));
     padding-inline: calc(48px * var(--cs));
     padding-block: calc(28px * var(--cs));
   }
 
   .bs-fs-main {
-    @apply flex min-h-0 flex-1 items-center;
+    @apply flex items-center;
     gap: calc(48px * var(--cs));
   }
 
   .bs-fs-left {
-    @apply flex min-w-0 flex-1 flex-col justify-center;
+    @apply flex min-w-0 flex-1 flex-col;
     gap: calc(16px * var(--cs));
     max-width: calc(780px * var(--cs));
   }
@@ -1749,6 +1749,7 @@
   .bs-fs-header {
     @apply flex shrink-0 items-center;
     gap: calc(14px * var(--cs));
+    margin-bottom: calc(28px * var(--cs));
   }
 
   .bs-fs-logo {

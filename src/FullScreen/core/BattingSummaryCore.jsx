@@ -30,36 +30,36 @@ export default function BattingSummaryCore({
       <BreakFabricBackground />
 
       <div className="bs-fs-inner">
-        <header className="bs-fs-header">
-          <div className="bs-fs-logo">
-            {team.logoUrl ? (
-              <img
-                src={team.logoUrl}
-                alt={teamLabel}
-                className="h-full w-full object-contain"
-              />
-            ) : (
-              <span className="ctrl-t-bs-fs-code font-bold uppercase text-[#9c0028]">
-                {team.code || "?"}
-              </span>
-            )}
-          </div>
-          <div className="bs-fs-header-text">
-            {teamLabel ? (
-              <h1 className="ctrl-t-bs-fs-team uppercase text-white">
-                {teamLabel}
-              </h1>
-            ) : null}
-            {tournament ? (
-              <p className="ctrl-t-bs-fs-tournament uppercase text-white">
-                {tournament}
-              </p>
-            ) : null}
-          </div>
-        </header>
-
         <div className="bs-fs-main">
           <div className="bs-fs-left">
+            <header className="bs-fs-header">
+              <div className="bs-fs-logo">
+                {team.logoUrl ? (
+                  <img
+                    src={team.logoUrl}
+                    alt={teamLabel}
+                    className="h-full w-full object-contain"
+                  />
+                ) : (
+                  <span className="ctrl-t-bs-fs-code font-bold uppercase text-[#9c0028]">
+                    {team.code || "?"}
+                  </span>
+                )}
+              </div>
+              <div className="bs-fs-header-text">
+                {teamLabel ? (
+                  <h1 className="ctrl-t-bs-fs-team uppercase text-white">
+                    {teamLabel}
+                  </h1>
+                ) : null}
+                {tournament ? (
+                  <p className="ctrl-t-bs-fs-tournament uppercase text-white">
+                    {tournament}
+                  </p>
+                ) : null}
+              </div>
+            </header>
+
             <div className="bs-fs-list">
               {batters.map((batter, index) => {
                 const name = batter.name ?? "";
