@@ -40,36 +40,36 @@ export default function BowlingSummaryCore({
       <BreakFabricBackground />
 
       <div className="bs-fs-inner">
+        <header className="bs-fs-header">
+          <div className="bs-fs-logo">
+            {team.logoUrl ? (
+              <img
+                src={team.logoUrl}
+                alt={teamLabel}
+                className="h-full w-full object-contain"
+              />
+            ) : (
+              <span className="ctrl-t-bs-fs-code font-bold uppercase text-[#c4002b]">
+                {team.code || "?"}
+              </span>
+            )}
+          </div>
+          <div className="bs-fs-header-text">
+            {teamLabel ? (
+              <h1 className="ctrl-t-bs-fs-team uppercase text-white">
+                {teamLabel}
+              </h1>
+            ) : null}
+            {tournament ? (
+              <p className="ctrl-t-bs-fs-tournament uppercase text-white">
+                {tournament}
+              </p>
+            ) : null}
+          </div>
+        </header>
+
         <div className="bs-fs-main">
           <div className="bs-fs-left">
-            <header className="bs-fs-header">
-              <div className="bs-fs-logo">
-                {team.logoUrl ? (
-                  <img
-                    src={team.logoUrl}
-                    alt={teamLabel}
-                    className="h-full w-full object-contain"
-                  />
-                ) : (
-                  <span className="ctrl-t-bs-fs-code font-bold uppercase text-[#c4002b]">
-                    {team.code || "?"}
-                  </span>
-                )}
-              </div>
-              <div className="bs-fs-header-text">
-                {teamLabel ? (
-                  <h1 className="ctrl-t-bs-fs-team uppercase text-white">
-                    {teamLabel}
-                  </h1>
-                ) : null}
-                {tournament ? (
-                  <p className="ctrl-t-bs-fs-tournament uppercase text-white">
-                    {tournament}
-                  </p>
-                ) : null}
-              </div>
-            </header>
-
             <div className="bowl-fs-table">
               <div className="bowl-fs-head">
                 <span className="bowl-fs-head-spacer" aria-hidden="true" />
@@ -116,6 +116,42 @@ export default function BowlingSummaryCore({
                 })}
               </div>
             </div>
+
+            {fallOfWickets ? (
+              <div className="bowl-fs-fow">
+                <span className="ctrl-t-bowl-fs-fow uppercase">
+                  FALL OF WICKETS : {fallOfWickets}
+                </span>
+              </div>
+            ) : null}
+
+            <div className={`bs-fs-footer ${panelBg}`}>
+              <div className="bs-fs-footer-meta">
+                <div className="bs-fs-footer-cell">
+                  <span className="ctrl-t-bs-fs-footer-label uppercase text-white">
+                    EXTRAS
+                  </span>
+                  <span className="ctrl-t-bs-fs-footer-value tabular-nums text-white">
+                    {summary.extras ?? 0}
+                  </span>
+                </div>
+
+                <span className="bs-fs-footer-divider" aria-hidden="true" />
+
+                <div className="bs-fs-footer-cell">
+                  <span className="ctrl-t-bs-fs-footer-label uppercase text-white">
+                    OVERS
+                  </span>
+                  <span className="ctrl-t-bs-fs-footer-value tabular-nums text-white">
+                    {summary.overs ?? "0.0"}
+                  </span>
+                </div>
+              </div>
+
+              <span className="ctrl-t-bs-fs-footer-score tabular-nums text-white">
+                {summary.score ?? "0-0"}
+              </span>
+            </div>
           </div>
 
           <div className={`bs-fs-crest ${panelBg}`}>
@@ -131,42 +167,6 @@ export default function BowlingSummaryCore({
               </span>
             )}
           </div>
-        </div>
-
-        {fallOfWickets ? (
-          <div className="bowl-fs-fow">
-            <span className="ctrl-t-bowl-fs-fow uppercase">
-              FALL OF WICKETS : {fallOfWickets}
-            </span>
-          </div>
-        ) : null}
-
-        <div className={`bs-fs-footer ${panelBg}`}>
-          <div className="bs-fs-footer-meta">
-            <div className="bs-fs-footer-cell">
-              <span className="ctrl-t-bs-fs-footer-label uppercase text-white">
-                EXTRAS
-              </span>
-              <span className="ctrl-t-bs-fs-footer-value tabular-nums text-white">
-                {summary.extras ?? 0}
-              </span>
-            </div>
-
-            <span className="bs-fs-footer-divider" aria-hidden="true" />
-
-            <div className="bs-fs-footer-cell">
-              <span className="ctrl-t-bs-fs-footer-label uppercase text-white">
-                OVERS
-              </span>
-              <span className="ctrl-t-bs-fs-footer-value tabular-nums text-white">
-                {summary.overs ?? "0.0"}
-              </span>
-            </div>
-          </div>
-
-          <span className="ctrl-t-bs-fs-footer-score tabular-nums text-white">
-            {summary.score ?? "0-0"}
-          </span>
         </div>
       </div>
     </div>

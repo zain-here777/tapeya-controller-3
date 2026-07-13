@@ -1427,7 +1427,7 @@
   }
 
   .bowl-fs-table {
-    @apply flex min-h-0 w-full flex-1 flex-col;
+    @apply flex w-full flex-col;
     gap: calc(8px * var(--cs));
   }
 
@@ -1470,8 +1470,7 @@
   }
 
   .bowl-fs-fow {
-    @apply flex w-full shrink-0 items-center self-start;
-    max-width: calc(780px * var(--cs));
+    @apply flex w-full shrink-0 items-center;
     min-height: calc(52px * var(--cs));
     padding-block: calc(12px * var(--cs));
     padding-inline: calc(22px * var(--cs));
@@ -1737,12 +1736,12 @@
   }
 
   .bs-fs-main {
-    @apply flex min-h-0 flex-1 items-start;
+    @apply flex min-h-0 flex-1 items-center;
     gap: calc(48px * var(--cs));
   }
 
   .bs-fs-left {
-    @apply flex min-h-0 min-w-0 flex-1 flex-col;
+    @apply flex min-w-0 flex-1 flex-col justify-center;
     gap: calc(16px * var(--cs));
     max-width: calc(780px * var(--cs));
   }
@@ -1750,7 +1749,6 @@
   .bs-fs-header {
     @apply flex shrink-0 items-center;
     gap: calc(14px * var(--cs));
-    margin-bottom: calc(28px * var(--cs));
   }
 
   .bs-fs-logo {
@@ -1766,7 +1764,7 @@
   }
 
   .bs-fs-list {
-    @apply flex min-h-0 w-full flex-1 flex-col overflow-hidden;
+    @apply flex w-full flex-col;
     gap: calc(8px * var(--cs));
   }
 
@@ -1794,7 +1792,7 @@
   }
 
   .bs-fs-crest {
-    @apply mt-auto mb-auto flex shrink-0 items-center justify-center overflow-hidden self-center;
+    @apply flex shrink-0 items-center justify-center overflow-hidden self-center;
     height: calc(340px * var(--cs));
     width: calc(340px * var(--cs));
     border-radius: calc(20px * var(--cs));
@@ -1807,8 +1805,7 @@
   }
 
   .bs-fs-footer {
-    @apply flex w-full shrink-0 items-center justify-between self-start;
-    max-width: calc(780px * var(--cs));
+    @apply flex w-full shrink-0 items-center justify-between;
     min-height: calc(72px * var(--cs));
     padding-block: calc(12px * var(--cs));
     padding-inline: calc(24px * var(--cs));
