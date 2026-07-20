@@ -1,5 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
-const layout = require("./src/theme/layout.constants.cjs");
+const layout = require("./src/themes/theme3/theme/layout.constants.cjs");
 
 /** Convert rem/em theme tokens to px (16px root). Percentages and unitless values are kept. */
 const toPx = (value) => {
