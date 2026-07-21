@@ -15,15 +15,26 @@ function PanelDivider() {
  * @param {import('../../../../../shared/types/match.types.js').MatchBowler} [props.bowler]
  * @param {string} [props.teamCode]
  * @param {string} props.backgroundColor
+ * @param {boolean} [props.showFullOverBalls] - Always show the padded over strip
+ * @param {boolean} [props.showLastOverSummary] - Show "Last over X runs" instead of balls
  */
-export default function DefaultBowlingPanel({ bowler, teamCode, backgroundColor }) {
+export default function DefaultBowlingPanel({
+  bowler,
+  teamCode,
+  backgroundColor,
+  showFullOverBalls = true,
+  showLastOverSummary = false,
+}) {
   if (!bowler) {
     return (
       <div className="min-w-0 flex-1" style={{ backgroundColor }} aria-hidden="true" />
     );
   }
 
-  const { name, wickets = 0, runs = 0, overs, overBalls = [] } = bowler;
+  const { name, wickets = 0, runs = 0, overs, overBalls = [], lastOverRuns } = bowler;
+  const showOverBalls =
+    !showLastOverSummary && (showFullOverBalls || overBalls.length > 0);
+  const lastOverValue = lastOverRuns ?? (showLastOverSummary ? 0 : null);
 
   return (
     <div
@@ -45,7 +56,21 @@ export default function DefaultBowlingPanel({ bowler, teamCode, backgroundColor 
             ) : null}
           </span>
         </div>
-        <DefaultOverBalls balls={overBalls} />
+
+        {showLastOverSummary ? (
+          <p className="m-0 mt-[calc(10px*var(--t4-scale))] whitespace-nowrap text-[calc(28px*var(--t4-scale))] font-medium leading-none text-white">
+            Last over{" "}
+            <span
+              key={lastOverValue}
+              className="animate-score-pop font-bold tabular-nums"
+            >
+              {lastOverValue}
+            </span>
+            {" runs"}
+          </p>
+        ) : null}
+
+        {showOverBalls ? <DefaultOverBalls balls={overBalls} /> : null}
       </div>
 
       <PanelDivider />
