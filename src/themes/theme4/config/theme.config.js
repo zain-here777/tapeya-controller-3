@@ -15,7 +15,7 @@ export const theme4Config = {
     crestRed: "linear-gradient(135deg, #f87171, #dc2626)",
   },
   fonts: {
-    primary: '"Inter", "Segoe UI", sans-serif',
-    score: '"Saira Condensed", sans-serif',
+    primary: '"Montserrat", sans-serif',
+    score: '"Montserrat", sans-serif',
   },
 };

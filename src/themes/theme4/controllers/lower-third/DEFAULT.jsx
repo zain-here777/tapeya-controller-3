@@ -1,5 +1,5 @@
 import React from "react";
-import ScorecardLowerThird from "../../LowerThird/core/ScorecardLowerThird.jsx";
+import DefaultLowerThird from "../../LowerThird/core/DefaultLowerThird.jsx";
 import { defaultConfig } from "../../LowerThird/config/default.config.js";
 
 /**
@@ -10,6 +10,6 @@ import { defaultConfig } from "../../LowerThird/config/default.config.js";
  */
 export default function Default({ match, config }) {
   return (
-    <ScorecardLowerThird match={match} baseConfig={defaultConfig} config={config} />
+    <DefaultLowerThird match={match} baseConfig={defaultConfig} config={config} />
   );
 }

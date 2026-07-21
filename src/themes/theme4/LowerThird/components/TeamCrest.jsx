@@ -14,23 +14,26 @@ export default function TeamCrest({
   logoUrl,
   theme = "gold",
   size = "md",
+  className = "",
 }) {
   const initials = (code || name || "?").slice(0, 3).toUpperCase();
   const crestClass = CREST_THEMES[theme] || CREST_THEMES.gold;
-  const sizeClass = size === "sm" ? "t4-crest-sm" : "t4-crest-md";
+  const sizeClass =
+    size === "sm" ? "t4-crest-sm" : size === "lg" ? "t4-crest-lg" : "t4-crest-md";
+  const extra = className.trim();
 
   if (logoUrl) {
     return (
       <img
         src={logoUrl}
         alt={name || code || "Team"}
-        className={`t4-crest t4-crest-img ${sizeClass}`}
+        className={`t4-crest t4-crest-img ${sizeClass}${extra ? ` ${extra}` : ""} object-contain`}
       />
     );
   }
 
   return (
-    <div className={`t4-crest ${crestClass} ${sizeClass}`} aria-hidden>
+    <div className={`t4-crest ${crestClass} ${sizeClass}${extra ? ` ${extra}` : ""}`} aria-hidden>
       {initials}
     </div>
   );

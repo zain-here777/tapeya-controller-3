@@ -20,9 +20,62 @@
   font-family: "Inter", "Segoe UI", sans-serif;
 }
 
+[data-theme="theme4"] .t4-output-page {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #ffffff;
+  color: var(--t4-text);
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+[data-theme="theme4"] .t4-output-toolbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-start;
+  padding: calc(8px * var(--t4-scale)) calc(12px * var(--t4-scale));
+  pointer-events: none;
+}
+
+[data-theme="theme4"] .t4-output-toolbar-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(8px * var(--t4-scale));
+  border-radius: calc(4px * var(--t4-scale));
+  background: rgba(11, 18, 32, 0.88);
+  padding: calc(8px * var(--t4-scale)) calc(12px * var(--t4-scale));
+  font-size: calc(13px * var(--t4-scale));
+  backdrop-filter: blur(8px);
+  pointer-events: auto;
+}
+
+[data-theme="theme4"] .t4-output-toolbar-link {
+  color: #7dd3fc;
+  text-decoration: none;
+}
+
+[data-theme="theme4"] .t4-output-toolbar-link:hover {
+  color: #bae6fd;
+}
+
+[data-theme="theme4"] .t4-output-toolbar-sep {
+  color: rgba(248, 250, 252, 0.35);
+}
+
+[data-theme="theme4"] .t4-output-toolbar-title {
+  color: rgba(248, 250, 252, 0.92);
+}
+
 [data-theme="theme4"] .t4-controller-scaled {
   width: 100%;
-  font-family: "Inter", "Segoe UI", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 [data-theme="theme4"] .t4-bar {
@@ -80,7 +133,7 @@
 }
 
 [data-theme="theme4"] .t4-team-runs {
-  font-family: "Saira Condensed", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: calc(36px * var(--t4-scale));
   font-weight: 700;
   line-height: 1;
@@ -106,6 +159,12 @@
   width: calc(48px * var(--t4-scale));
   height: calc(48px * var(--t4-scale));
   font-size: calc(12px * var(--t4-scale));
+}
+
+[data-theme="theme4"] .t4-crest-lg {
+  width: calc(96px * var(--t4-scale));
+  height: calc(96px * var(--t4-scale));
+  font-size: calc(16px * var(--t4-scale));
 }
 
 [data-theme="theme4"] .t4-crest-sm {
@@ -145,7 +204,7 @@
 }
 
 [data-theme="theme4"] .t4-batter-stats {
-  font-family: "Saira Condensed", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: calc(28px * var(--t4-scale));
   font-weight: 600;
   color: var(--t4-text);
@@ -172,7 +231,7 @@
 }
 
 [data-theme="theme4"] .t4-stat-value {
-  font-family: "Saira Condensed", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: calc(32px * var(--t4-scale));
   font-weight: 700;
   color: var(--t4-text);
@@ -233,6 +292,7 @@
 
 [data-theme="theme4"] .t4-lt-enter-shell {
   width: 100%;
+  flex-shrink: 0;
   overflow: hidden;
 }
 

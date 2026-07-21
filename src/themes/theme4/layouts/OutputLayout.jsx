@@ -1,24 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-/** Theme 4 output page shell — isolated from theme 3 ControllerLayout. */
+/** Theme 4 output page shell — lower third flush to viewport bottom (matches theme 3 output-page). */
 export default function OutputLayout({ children, title, panelLink = "/" }) {
   return (
-    <div className="t4-broadcast-page flex flex-col">
-      <div className="flex shrink-0 items-center justify-between gap-4 border-b border-white/10 px-4 py-2">
-        <div className="flex items-center gap-2 text-sm">
-          <Link to={panelLink} className="text-sky-400 hover:text-sky-300">
+    <div className="t4-output-page">
+      <div className="t4-output-toolbar">
+        <div className="t4-output-toolbar-breadcrumb">
+          <Link to={panelLink} className="t4-output-toolbar-link">
             Control panel
           </Link>
           {title ? (
             <>
-              <span className="text-white/30">/</span>
-              <span className="text-white/90">{title}</span>
+              <span className="t4-output-toolbar-sep">/</span>
+              <span className="t4-output-toolbar-title">{title}</span>
             </>
           ) : null}
         </div>
       </div>
-      <div className="flex min-h-0 flex-1 flex-col justify-end">{children}</div>
+      {children}
     </div>
   );
 }

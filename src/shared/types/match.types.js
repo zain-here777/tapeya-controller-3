@@ -12,6 +12,8 @@
  * @property {string} [overs] - e.g. "12.4"
  * @property {number|string} [oversLimit] - e.g. 20
  * @property {string} [inningsLabel] - e.g. "P1"
+ * @property {string} [phaseLabel] - e.g. "Powerplay 1"
+ * @property {string} [colorKey] - Key into theme team color map (e.g. "teamA")
  *
  * @typedef {Object} MatchBatter
  * @property {string} id
@@ -35,6 +37,8 @@
  * @property {string} [overs]
  * @property {Array<string|number|null>} [overBalls] - Current over, up to 6 balls
  * @property {number} [lastOverRuns] - Runs scored in the previous over
+ * @property {string|number} [economy]
+ * @property {number|string} [dotBalls]
  *
  * @typedef {Object} MatchFallOfWicket
  * @property {string} [id]
@@ -51,6 +55,8 @@
  * @property {MatchStat} [stat] - Single active stat slot (Partnership, CRR, etc.)
  * @property {MatchStat[]} [stats] - Multiple stat slots; takes precedence over `stat`
  * @property {MatchBowler} [featuredPlayer] - Current bowler
+ * @property {string} [phaseLabel] - Phase under center score (Theme 4 Default)
+ * @property {MatchStat} [runRateStat] - Run-rate line (Theme 4 Default)
  */
 
 export {};

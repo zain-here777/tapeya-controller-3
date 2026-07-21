@@ -63,6 +63,7 @@ module.exports = {
         sans: ["Inter", "Segoe UI", "sans-serif"],
         controller: ['"Saira"', "sans-serif"],
         score: ['"Saira Condensed"', "sans-serif"],
+        montserrat: ['"Montserrat"', "sans-serif"],
       },
       height: {
         controller: `${layout.CONTROLLER_HEIGHT}px`,
@@ -136,6 +137,19 @@ module.exports = {
           "0%": { width: "0%" },
           "100%": { width: "var(--chart-bar-w, 100%)" },
         },
+        strikeBlink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.2" },
+        },
+        ballPop: {
+          "0%": { transform: "scale(0.55)", opacity: "0" },
+          "70%": { transform: "scale(1.08)", opacity: "1" },
+          "100%": { transform: "scale(1)", opacity: "1" },
+        },
+        softIn: {
+          "0%": { transform: "translateY(4px)", opacity: "0.35" },
+          "100%": { transform: "none", opacity: "1" },
+        },
       },
       animation: {
         "score-pop": "scorePop 320ms cubic-bezier(0.22,1,0.36,1)",
@@ -150,6 +164,9 @@ module.exports = {
           "chartFadeUp 0.6s cubic-bezier(0.18, 0.9, 0.2, 1) both",
         "chart-grow-w":
           "chartGrowW 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both",
+        "strike-blink": "strikeBlink 2.2s ease-in-out infinite",
+        "ball-pop": "ballPop 380ms cubic-bezier(0.22,1,0.36,1) both",
+        "soft-in": "softIn 420ms cubic-bezier(0.22,1,0.36,1) both",
       },
     },
   },

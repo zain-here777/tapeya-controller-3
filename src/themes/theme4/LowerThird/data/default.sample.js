@@ -1,47 +1,56 @@
+import teamALogo from "../../../../shared/england-team.png";
+import teamBLogo from "../../../../shared/nz-team.png";
+
 /** Sample match data for theme 4 Default controller only. */
 const defaultSampleMatch = {
   teamA: {
-    code: "ALB",
+    code: "ENG",
+    name: "England",
+    logoUrl: teamALogo,
     theme: "gold",
-    runs: 9,
+    colorKey: "teamA",
+    runs: 44,
     wickets: 0,
-    overs: "1.0",
-    oversLimit: 20,
-    inningsLabel: "P1",
+    overs: "6.4",
+    oversLimit: 50,
   },
 
   teamB: {
-    code: "KBU",
-    name: "Khartoum Bulls",
+    code: "NZ",
+    name: "New Zealand",
+    logoUrl: teamBLogo,
     theme: "gold",
+    colorKey: "teamB",
   },
 
   batters: [
     {
       id: "b1",
-      name: "SHAHAB",
-      runs: 5,
-      balls: 4,
-      onStrike: true,
+      name: "Duckett",
+      runs: 18,
+      balls: 17,
+      onStrike: false,
     },
     {
       id: "b2",
-      name: "MUBASSH",
-      runs: 4,
-      balls: 2,
-      onStrike: false,
+      name: "Bethell",
+      runs: 17,
+      balls: 23,
+      onStrike: true,
     },
   ],
 
-  stat: { label: "CRR", value: "9.00" },
+  stat: { label: "RR", value: "6.60" },
 
   featuredPlayer: {
     id: "f1",
-    name: "FAHEEM",
+    name: "Prince",
     wickets: 0,
-    runs: 9,
-    overs: "1.0",
-    overBalls: ["dot", "dot", 4, 1, "dot", 4],
+    runs: 7,
+    overs: "0.4",
+    economy: "10.50",
+    dotBalls: 3,
+    overBalls: ["dot", "dot", "dot", 1, "5WD", "WD"],
   },
 };
 
