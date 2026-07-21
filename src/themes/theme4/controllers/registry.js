@@ -32,6 +32,12 @@ import TournamentName from "./lower-third/TOURNAMENT_NAME.jsx";
 import Umpires from "./lower-third/UMPIRES.jsx";
 import Wide from "./lower-third/WIDE.jsx";
 import WinPrediction from "./lower-third/WIN_PREDICTION.jsx";
+import TourHitFifties from "./tour-hit/FIFTIES.jsx";
+import TourHitFour from "./tour-hit/FOUR.jsx";
+import TourHitHundreds from "./tour-hit/HUNDREDS.jsx";
+import TourHitRuns from "./tour-hit/RUNS.jsx";
+import TourHitSixes from "./tour-hit/SIXES.jsx";
+import TourHitWickets from "./tour-hit/WICKETS.jsx";
 import atStageSample from "../LowerThird/data/atStage.sample.js";
 import commentatorsSample from "../LowerThird/data/commentators.sample.js";
 import currentPartnershipSample from "../LowerThird/data/currentPartnership.sample.js";
@@ -65,13 +71,20 @@ import tournamentNameSample from "../LowerThird/data/tournamentName.sample.js";
 import umpiresSample from "../LowerThird/data/umpires.sample.js";
 import wideSample from "../LowerThird/data/wide.sample.js";
 import winPredictionSample from "../LowerThird/data/winPrediction.sample.js";
+import tourHitFiftiesSample from "../TourHit/data/fifties.sample.js";
+import tourHitFourSample from "../TourHit/data/four.sample.js";
+import tourHitHundredsSample from "../TourHit/data/hundreds.sample.js";
+import tourHitRunsSample from "../TourHit/data/runs.sample.js";
+import tourHitSixesSample from "../TourHit/data/sixes.sample.js";
+import tourHitWicketsSample from "../TourHit/data/wickets.sample.js";
 
 export const LOWER_THIRD_PANEL_ROW_SIZE = 17;
 
-const CONTROLLER_CATEGORIES = ["lower-third"];
+const CONTROLLER_CATEGORIES = ["lower-third", "tour-hit"];
 
 const CONTROLLER_CATEGORY_LABELS = {
   "lower-third": "Lower Third",
+  "tour-hit": "Tour-Hit",
 };
 
 /** @type {Array<{ id: string, label: string, component: import('react').ComponentType, getProps: () => Record<string, unknown> }>} */
@@ -282,20 +295,74 @@ const LOWER_THIRD_CONTROLLERS = [
   },
 ];
 
+/**
+ * Tour-Hit controllers — mini badge above a ThisOver main bar.
+ * Each entry is isolated — own component, config, and sample data.
+ */
+const TOUR_HIT_CONTROLLERS = [
+  {
+    id: "four",
+    label: "4's",
+    component: TourHitFour,
+    getProps: () => ({ match: tourHitFourSample }),
+  },
+  {
+    id: "sixes",
+    label: "6's",
+    component: TourHitSixes,
+    getProps: () => ({ match: tourHitSixesSample }),
+  },
+  {
+    id: "fifties",
+    label: "50's",
+    component: TourHitFifties,
+    getProps: () => ({ match: tourHitFiftiesSample }),
+  },
+  {
+    id: "hundreds",
+    label: "100's",
+    component: TourHitHundreds,
+    getProps: () => ({ match: tourHitHundredsSample }),
+  },
+  {
+    id: "runs",
+    label: "Run's",
+    component: TourHitRuns,
+    getProps: () => ({ match: tourHitRunsSample }),
+  },
+  {
+    id: "wickets",
+    label: "Wkt's",
+    component: TourHitWickets,
+    getProps: () => ({ match: tourHitWicketsSample }),
+  },
+];
+
 /** @type {Record<string, Record<string, import('react').ComponentType>>} */
 export const controllerRegistry = {
   "lower-third": Object.fromEntries(
     LOWER_THIRD_CONTROLLERS.map(({ id, component }) => [id, component])
   ),
+  "tour-hit": Object.fromEntries(
+    TOUR_HIT_CONTROLLERS.map(({ id, component }) => [id, component])
+  ),
 };
 
 /** @type {Array<{ category: string, id: string, label: string, getProps: () => Record<string, unknown> }>} */
-export const controllerCatalog = LOWER_THIRD_CONTROLLERS.map(({ id, label, getProps }) => ({
-  category: "lower-third",
-  id,
-  label,
-  getProps,
-}));
+export const controllerCatalog = [
+  ...LOWER_THIRD_CONTROLLERS.map(({ id, label, getProps }) => ({
+    category: "lower-third",
+    id,
+    label,
+    getProps,
+  })),
+  ...TOUR_HIT_CONTROLLERS.map(({ id, label, getProps }) => ({
+    category: "tour-hit",
+    id,
+    label,
+    getProps,
+  })),
+];
 
 /** @param {string} category @param {string} id */
 export function getController(category, id) {

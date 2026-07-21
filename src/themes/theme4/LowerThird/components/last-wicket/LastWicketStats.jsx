@@ -10,7 +10,7 @@ export default function LastWicketStats({ stats = [] }) {
   if (!stats.length) return null;
 
   return (
-    <div className="flex min-h-0 flex-1 items-center justify-center border-t border-white/25 px-[calc(28px*var(--t4-scale))]">
+    <div className="flex h-[var(--t4-bar-row-tall)] min-h-0 shrink-0 items-center justify-center border-t border-white/25 px-[calc(28px*var(--t4-scale))]">
       <div className="flex items-end gap-[calc(36px*var(--t4-scale))]">
         {stats.map((stat) => (
           <div

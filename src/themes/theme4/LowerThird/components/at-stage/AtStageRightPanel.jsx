@@ -4,7 +4,7 @@ import AtStageCard from "../at-stage/AtStageCard.jsx";
 function PanelDivider() {
   return (
     <div
-      className="h-[calc(68px*var(--t4-scale))] w-px shrink-0 self-center bg-white/25"
+      className="t4-lt-vrule"
       aria-hidden="true"
     />
   );

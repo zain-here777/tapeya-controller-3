@@ -14,7 +14,7 @@ export default function ControllerHost({ category, id, ...props }) {
     return null;
   }
 
-  if (category === "lower-third") {
+  if (category === "lower-third" || category === "tour-hit") {
     return (
       <LowerThirdEnter animKey={`${category}/${id}`}>
         <Controller {...props} />

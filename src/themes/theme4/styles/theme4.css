@@ -2,7 +2,10 @@
 
 [data-theme="theme4"] {
   --t4-scale: var(--ctrl-scale, 1);
-  --t4-bar-height: calc(120px * var(--t4-scale));
+  --t4-bar-height: calc(139px * var(--t4-scale));
+  /* Two-row lower-thirds (Theme 3: 56 + 83 = 139) */
+  --t4-bar-row-short: calc(56px * var(--t4-scale));
+  --t4-bar-row-tall: calc(83px * var(--t4-scale));
   --t4-surface: #0b1220;
   --t4-panel-primary: #0f2847;
   --t4-panel-stat: #071018;
@@ -99,12 +102,100 @@
   border-left: 1px solid var(--t4-divider);
 }
 
+[data-theme="theme4"] .t4-lt-vrule {
+  width: 1px;
+  height: calc(68px * var(--t4-scale));
+  flex-shrink: 0;
+  align-self: center;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
 [data-theme="theme4"] .t4-bg-panel-primary {
   background: var(--t4-panel-primary);
 }
 
 [data-theme="theme4"] .t4-bg-panel-stat {
   background: var(--t4-panel-stat);
+}
+
+/* Tour-Hit mini badge — sits above ThisOver main bar */
+[data-theme="theme4"] .t4-tour-hit-mini-offset {
+  margin-bottom: calc(12px * var(--t4-scale));
+}
+
+[data-theme="theme4"] .t4-tour-hit-mini {
+  display: flex;
+  width: max-content;
+  max-width: 100%;
+  flex-shrink: 0;
+  align-items: center;
+  height: var(--t4-bar-height);
+  gap: calc(28px * var(--t4-scale));
+  padding-left: calc(24px * var(--t4-scale));
+  padding-right: calc(40px * var(--t4-scale));
+  background: var(--t4-panel-primary);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="theme4"] .t4-tour-hit-mini-logo {
+  display: flex;
+  height: calc(84px * var(--t4-scale));
+  width: calc(84px * var(--t4-scale));
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(
+    165deg,
+    #ffffff 0%,
+    #ffffff 58%,
+    #f4f8fd 82%,
+    #e3eef9 100%
+  );
+}
+
+[data-theme="theme4"] .t4-tour-hit-mini-logo-text {
+  font-size: calc(24px * var(--t4-scale));
+  font-weight: 700;
+  letter-spacing: calc(1px * var(--t4-scale));
+  line-height: 1;
+  text-transform: uppercase;
+  color: #0b1220;
+}
+
+[data-theme="theme4"] .t4-tour-hit-mini-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: calc(4px * var(--t4-scale));
+  line-height: 1;
+}
+
+[data-theme="theme4"] .t4-tour-hit-mini-eyebrow {
+  font-size: calc(16px * var(--t4-scale));
+  font-weight: 600;
+  letter-spacing: calc(1.5px * var(--t4-scale));
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+[data-theme="theme4"] .t4-tour-hit-mini-title {
+  font-size: calc(32px * var(--t4-scale));
+  font-weight: 700;
+  letter-spacing: calc(1px * var(--t4-scale));
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+[data-theme="theme4"] .t4-tour-hit-mini-value {
+  flex-shrink: 0;
+  font-size: calc(56px * var(--t4-scale));
+  font-weight: 700;
+  letter-spacing: calc(0.5px * var(--t4-scale));
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: #ffffff;
 }
 
 [data-theme="theme4"] .t4-bowler-section {

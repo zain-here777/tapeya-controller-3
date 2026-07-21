@@ -17,7 +17,7 @@ export default function TournamentNameContent({ tournament, venue }) {
       </div>
 
       {venue ? (
-        <div className="flex h-[calc(56px*var(--t4-scale))] shrink-0 items-center justify-center border-t border-white/25 px-[calc(28px*var(--t4-scale))]">
+        <div className="flex h-[var(--t4-bar-row-short)] shrink-0 items-center justify-center border-t border-white/25 px-[calc(28px*var(--t4-scale))]">
           <span className="text-center text-[calc(22px*var(--t4-scale))] font-bold uppercase leading-tight tracking-[calc(2px*var(--t4-scale))] text-white">
             {venue}
           </span>

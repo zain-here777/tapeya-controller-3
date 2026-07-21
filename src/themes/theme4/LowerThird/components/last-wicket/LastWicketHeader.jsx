@@ -16,7 +16,7 @@ export default function LastWicketHeader({
   balls = 0,
 }) {
   return (
-    <div className="flex h-[calc(48px*var(--t4-scale))] shrink-0 items-center justify-between gap-x-[calc(24px*var(--t4-scale))] px-[calc(28px*var(--t4-scale))]">
+    <div className="flex h-[var(--t4-bar-row-short)] shrink-0 items-center justify-between gap-x-[calc(24px*var(--t4-scale))] px-[calc(28px*var(--t4-scale))]">
       <div className="flex min-w-0 items-baseline gap-[calc(16px*var(--t4-scale))]">
         <span className="flex-none whitespace-nowrap text-[calc(28px*var(--t4-scale))] font-bold uppercase leading-none tracking-wide text-white">
           {name}

@@ -2,10 +2,7 @@ import React from "react";
 
 function PanelDivider() {
   return (
-    <div
-      className="h-[calc(68px*var(--t4-scale))] w-px shrink-0 self-center bg-white/25"
-      aria-hidden="true"
-    />
+    <div className="t4-lt-vrule" aria-hidden="true" />
   );
 }
 
@@ -152,7 +149,7 @@ export default function DefaultBattingPanel({
         </>
       ) : null}
 
-      <div className="flex min-w-0 flex-1 flex-col justify-center gap-[calc(18px*var(--t4-scale))]">
+      <div className="flex min-w-0 flex-1 flex-col justify-center gap-[calc(21px*var(--t4-scale))]">
         <BatterRow batter={batterOne} />
         <BatterRow batter={batterTwo} />
       </div>
