@@ -46,7 +46,8 @@ export default function DefaultLowerThird({
 
   const teamName = match.teamA.name || match.teamA.code;
 
-  const runRateStat = pickRunRateStat(match);
+  const runRateStats = match.runRateStats?.length ? match.runRateStats : null;
+  const runRateStat = runRateStats ? null : pickRunRateStat(match);
 
   return (
     <div className="w-full shrink-0 select-none font-montserrat">
@@ -61,6 +62,7 @@ export default function DefaultLowerThird({
             team={match.teamA}
             batters={match.batters}
             runRateStat={runRateStat}
+            runRateStats={runRateStats}
             backgroundColor={battingColor}
           />
         </div>

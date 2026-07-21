@@ -6,6 +6,7 @@ import MatchSummary from "./lower-third/MATCH_SUMMARY.jsx";
 import MiniScorecard from "./lower-third/MINI_SCORECARD.jsx";
 import NeedTarget from "./lower-third/NEED_TARGET.jsx";
 import ResultLT from "./lower-third/RESULT_LT.jsx";
+import RunRate from "./lower-third/RUN_RATE.jsx";
 import TossLT from "./lower-third/TOSS_LT.jsx";
 import atStageSample from "../LowerThird/data/atStage.sample.js";
 import defaultSampleMatch from "../LowerThird/data/default.sample.js";
@@ -14,6 +15,7 @@ import matchSummarySample from "../LowerThird/data/matchSummary.sample.js";
 import miniScorecardSample from "../LowerThird/data/miniScorecard.sample.js";
 import needTargetSample from "../LowerThird/data/needTarget.sample.js";
 import resultLtSample from "../LowerThird/data/resultLt.sample.js";
+import runRateSample from "../LowerThird/data/runRate.sample.js";
 import tossLtSample from "../LowerThird/data/tossLt.sample.js";
 
 export const LOWER_THIRD_PANEL_ROW_SIZE = 6;
@@ -37,6 +39,12 @@ const LOWER_THIRD_CONTROLLERS = [
     label: "Default",
     component: Default,
     getProps: () => ({ match: defaultSampleMatch }),
+  },
+  {
+    id: "run-rate",
+    label: "Run Rate",
+    component: RunRate,
+    getProps: () => ({ match: runRateSample }),
   },
   {
     id: "need-target",

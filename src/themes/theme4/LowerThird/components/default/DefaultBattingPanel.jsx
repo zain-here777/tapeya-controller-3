@@ -53,7 +53,14 @@ function BatterRow({ batter }) {
   );
 }
 
-function OversRunRateAside({ overs, oversLimit, runRateStat }) {
+function OversRunRateAside({ overs, oversLimit, runRateStat, runRateStats }) {
+  const rates =
+    Array.isArray(runRateStats) && runRateStats.length > 0
+      ? runRateStats
+      : runRateStat
+        ? [runRateStat]
+        : [];
+
   return (
     <div className="flex shrink-0 flex-col items-center justify-center gap-[calc(6px*var(--t4-scale))] leading-snug">
       {(overs || oversLimit != null) && (
@@ -66,14 +73,18 @@ function OversRunRateAside({ overs, oversLimit, runRateStat }) {
         </span>
       )}
 
-      {runRateStat ? (
-        <span
-          key={`${runRateStat.label}-${runRateStat.value}`}
-          className="animate-soft-in whitespace-nowrap text-center text-[calc(22px*var(--t4-scale))] font-medium"
-        >
-          {runRateStat.label}{" "}
-          <span className="font-medium tabular-nums">{runRateStat.value}</span>
-        </span>
+      {rates.length > 0 ? (
+        <div className="flex flex-col items-center justify-center gap-[calc(4px*var(--t4-scale))]">
+          {rates.map((stat) => (
+            <span
+              key={`${stat.label}-${stat.value}`}
+              className="animate-soft-in whitespace-nowrap text-center text-[calc(22px*var(--t4-scale))] font-medium"
+            >
+              {stat.label}{" "}
+              <span className="font-medium tabular-nums">{stat.value}</span>
+            </span>
+          ))}
+        </div>
       ) : null}
     </div>
   );
@@ -109,6 +120,7 @@ function NeedTargetStatsAside({ stats }) {
  * @param {import('../../../../../shared/types/match.types.js').MatchTeam} props.team
  * @param {import('../../../../../shared/types/match.types.js').MatchBatter[]} [props.batters]
  * @param {import('../../../../../shared/types/match.types.js').MatchStat} [props.runRateStat]
+ * @param {import('../../../../../shared/types/match.types.js').MatchStat[]} [props.runRateStats] - Multiple rates (e.g. CRR + RRR)
  * @param {import('../../../../../shared/types/match.types.js').MatchStat[]} [props.stats] - Need/Target pairs; replaces overs + RR when set
  * @param {string} props.backgroundColor
  */
@@ -116,6 +128,7 @@ export default function DefaultBattingPanel({
   team,
   batters = [],
   runRateStat,
+  runRateStats,
   stats,
   backgroundColor,
 }) {
@@ -153,6 +166,7 @@ export default function DefaultBattingPanel({
           overs={overs}
           oversLimit={oversLimit}
           runRateStat={runRateStat}
+          runRateStats={runRateStats}
         />
       )}
     </div>
