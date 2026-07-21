@@ -1,12 +1,12 @@
 import React from "react";
 
 /**
- * Full-screen centered action message with Theme 4 transition motion.
+ * Full-screen centered action message — Theme 4 slate + kinetic type (not Theme 3 glow/ring).
  *
  * @param {Object} props
  * @param {string} props.label
  * @param {string} [props.accent]
- * @param {string} [props.variant] - Animation identity (four, six, out, …)
+ * @param {string} [props.variant]
  */
 export default function ActionMessageOverlay({
   label,
@@ -15,7 +15,8 @@ export default function ActionMessageOverlay({
 }) {
   if (!label) return null;
 
-  const isCompact = String(label).length > 8;
+  const text = String(label);
+  const isCompact = text.length > 8;
   const safeVariant = variant || "four";
 
   return (
@@ -24,22 +25,40 @@ export default function ActionMessageOverlay({
       style={{ "--t4-fst-accent": accent }}
       aria-live="polite"
     >
-      <div className="t4-fst-action-mesh" aria-hidden="true" />
-      <div className="t4-fst-action-fx" aria-hidden="true">
-        <span className="t4-fst-action-orbit" />
-        <span className="t4-fst-action-beam t4-fst-action-beam--a" />
-        <span className="t4-fst-action-beam t4-fst-action-beam--b" />
-        <span className="t4-fst-action-ripple t4-fst-action-ripple--1" />
-        <span className="t4-fst-action-ripple t4-fst-action-ripple--2" />
-      </div>
+      <div className="t4-fst-action-stage">
+        <div className="t4-fst-action-slate" aria-hidden="true">
+          <span className="t4-fst-action-slate-shine" />
+        </div>
 
-      <p
-        className={`t4-fst-action-label uppercase text-white${
-          isCompact ? " t4-fst-action-label--compact" : ""
-        }`}
-      >
-        {label}
-      </p>
+        <div className="t4-fst-action-frame" aria-hidden="true">
+          <span className="t4-fst-action-corner t4-fst-action-corner--tl" />
+          <span className="t4-fst-action-corner t4-fst-action-corner--tr" />
+          <span className="t4-fst-action-corner t4-fst-action-corner--bl" />
+          <span className="t4-fst-action-corner t4-fst-action-corner--br" />
+          <span className="t4-fst-action-rail t4-fst-action-rail--left" />
+          <span className="t4-fst-action-rail t4-fst-action-rail--right" />
+        </div>
+
+        <div className="t4-fst-action-accent-bar" aria-hidden="true" />
+
+        {isCompact ? (
+          <p className="t4-fst-action-label t4-fst-action-label--compact uppercase">
+            {text}
+          </p>
+        ) : (
+          <p className="t4-fst-action-label uppercase" aria-label={text}>
+            {text.split("").map((char, index) => (
+              <span
+                key={`${char}-${index}`}
+                className="t4-fst-action-char"
+                style={{ "--t4-fst-char-i": index }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </span>
+            ))}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
