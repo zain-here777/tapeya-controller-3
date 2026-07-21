@@ -1,12 +1,6 @@
-import teamALogo from "../../../../shared/england-team.png";
+import { createActionBannerSample } from "../config/actionBanner.shared.js";
 
 /** Sample data for the Theme 4 Four controller only. */
-const fourSample = {
-  labels: ["Four", "Four", "Four", "Four"],
-  colorKey: "teamA",
-  secondaryColorKey: "teamB",
-  teamA: { colorKey: "teamA" },
-  teamB: { colorKey: "teamB" },
-};
+const fourSample = createActionBannerSample("Four");
 
 export default fourSample;

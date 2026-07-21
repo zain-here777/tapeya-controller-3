@@ -1,9 +1,11 @@
 import React from "react";
 import ActionBannerConfetti from "./ActionBannerConfetti.jsx";
 import BroadcastCrossText from "./BroadcastCrossText.jsx";
+import BroadcastFourHero from "./BroadcastFourHero.jsx";
 
 /**
- * Broadcast Four strip — two "FOUR" labels cross at center (no logo / loaders).
+ * Broadcast action strip — shared letter-reveal / scale / triple layout for
+ * Four, Six, Replay, and other action controllers.
  *
  * @param {Object} props
  * @param {string} props.label
@@ -16,29 +18,40 @@ export default function ActionBannerBroadcast({
   compact,
 }) {
   const displayLabel = String(label || "Four").toUpperCase();
-  const textSize = compact
-    ? "text-[calc(44px*var(--t4-scale))]"
-    : "text-[calc(64px*var(--t4-scale))]";
+  const heroSize = compact
+    ? "text-[calc(36px*var(--t4-scale))]"
+    : "text-[calc(58px*var(--t4-scale))]";
+  const tripleSize = compact
+    ? "text-[calc(28px*var(--t4-scale))]"
+    : "text-[calc(52px*var(--t4-scale))]";
 
   return (
     <div
-      className="t4-broadcast-bar relative h-full w-full overflow-hidden"
+      className="t4-broadcast-bar relative h-full w-full overflow-visible"
       style={broadcastVars}
     >
-      <div className="t4-broadcast-bar-bg pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="t4-broadcast-bar-texture" />
-        <div className="t4-broadcast-bar-streak t4-broadcast-bar-streak--a motion-reduce:animate-none" />
-        <div className="t4-broadcast-bar-streak t4-broadcast-bar-streak--b motion-reduce:animate-none" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="t4-broadcast-bar-bg absolute inset-0">
+          <div className="t4-broadcast-bar-texture" />
+          <div className="t4-broadcast-bar-streak t4-broadcast-bar-streak--a motion-reduce:animate-none" />
+          <div className="t4-broadcast-bar-streak t4-broadcast-bar-streak--b motion-reduce:animate-none" />
+        </div>
+        <ActionBannerConfetti />
       </div>
 
-      <ActionBannerConfetti />
+      <div
+        className="t4-broadcast-four-sequence relative z-[2] h-full w-full overflow-visible"
+        role="img"
+        aria-label={displayLabel}
+      >
+        <BroadcastFourHero label={displayLabel} textSizeClass={heroSize} />
 
-      <div className="t4-broadcast-cross-stage relative z-[2] h-full w-full">
-        <div className="t4-broadcast-cross-runner t4-broadcast-cross-runner--left motion-reduce:animate-none">
-          <BroadcastCrossText label={displayLabel} textSize={textSize} />
-        </div>
-        <div className="t4-broadcast-cross-runner t4-broadcast-cross-runner--right motion-reduce:animate-none">
-          <BroadcastCrossText label={displayLabel} textSize={textSize} />
+        <div className="t4-broadcast-four-triple motion-reduce:opacity-100">
+          {[0, 1, 2].map((index) => (
+            <div key={index} className="t4-broadcast-four-triple-cell">
+              <BroadcastCrossText label={displayLabel} textSize={tripleSize} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

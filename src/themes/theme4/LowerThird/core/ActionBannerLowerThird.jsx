@@ -44,13 +44,16 @@ export default function ActionBannerLowerThird({
     secondaryFallback
   );
   const broadcastVars = teamBroadcastPalette(primaryColor, secondaryColor);
-  const isCompact = labels.some((label) => String(label).length > 8);
   const primaryLabel = labels[0] ?? resolvedFallback;
+  const isCompact =
+    layout === "broadcast"
+      ? String(primaryLabel).length > 6
+      : labels.some((label) => String(label).length > 8);
 
   if (layout === "broadcast") {
     return (
       <div className="w-full shrink-0 select-none font-montserrat">
-        <div className="relative flex h-[var(--t4-bar-height)] w-full items-stretch overflow-hidden shadow-[0_-2px_10px_rgba(0,0,0,0.25)]">
+        <div className="relative flex h-[var(--t4-bar-height)] w-full items-stretch overflow-visible shadow-[0_-2px_10px_rgba(0,0,0,0.25)]">
           <ActionBannerBroadcast
             label={primaryLabel}
             broadcastVars={broadcastVars}

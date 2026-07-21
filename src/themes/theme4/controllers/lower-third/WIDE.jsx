@@ -1,22 +1,22 @@
 import React from "react";
 import ActionBannerLowerThird from "../../LowerThird/core/ActionBannerLowerThird.jsx";
-import { fourConfig } from "../../LowerThird/config/four.config.js";
+import { wideConfig } from "../../LowerThird/config/wide.config.js";
 
 /**
- * Theme 4 Four lower-third controller.
- * Reuses the shared broadcast action-banner animation with "Four" text.
+ * Theme 4 Wide lower-third controller.
+ * Reuses the shared broadcast action-banner animation with "Wide" text.
  *
  * @param {Object} props
  * @param {Object} props.match
  * @param {Object} [props.config]
  */
-export default function Four({ match, config }) {
+export default function Wide({ match, config }) {
   return (
     <ActionBannerLowerThird
       match={match}
-      baseConfig={fourConfig}
+      baseConfig={wideConfig}
       config={config}
-      fallbackLabel="Four"
+      fallbackLabel="Wide"
     />
   );
 }

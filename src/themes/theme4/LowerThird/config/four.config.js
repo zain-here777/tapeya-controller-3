@@ -1,13 +1,10 @@
-import { createLowerThirdConfig } from "./shared.config.js";
+import { createActionBannerConfig } from "./actionBanner.shared.js";
 
 /**
  * Four — isolated config.
  * Boundary celebration lower third on batting-side team color.
  */
-export const fourConfig = createLowerThirdConfig({
+export const fourConfig = createActionBannerConfig({
   id: "four",
-  defaultTeamColorKey: "teamA",
-  defaultBowlingColorKey: "teamB",
   fallbackLabel: "Four",
-  actionBannerLayout: "broadcast",
 });

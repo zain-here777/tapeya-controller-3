@@ -1,22 +1,22 @@
 import React from "react";
 import ActionBannerLowerThird from "../../LowerThird/core/ActionBannerLowerThird.jsx";
-import { fourConfig } from "../../LowerThird/config/four.config.js";
+import { replayConfig } from "../../LowerThird/config/replay.config.js";
 
 /**
- * Theme 4 Four lower-third controller.
- * Reuses the shared broadcast action-banner animation with "Four" text.
+ * Theme 4 Replay lower-third controller.
+ * Reuses the shared broadcast action-banner animation with "Replay" text.
  *
  * @param {Object} props
  * @param {Object} props.match
  * @param {Object} [props.config]
  */
-export default function Four({ match, config }) {
+export default function Replay({ match, config }) {
   return (
     <ActionBannerLowerThird
       match={match}
-      baseConfig={fourConfig}
+      baseConfig={replayConfig}
       config={config}
-      fallbackLabel="Four"
+      fallbackLabel="Replay"
     />
   );
 }
