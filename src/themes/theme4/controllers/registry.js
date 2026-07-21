@@ -38,6 +38,16 @@ import TourHitHundreds from "./tour-hit/HUNDREDS.jsx";
 import TourHitRuns from "./tour-hit/RUNS.jsx";
 import TourHitSixes from "./tour-hit/SIXES.jsx";
 import TourHitWickets from "./tour-hit/WICKETS.jsx";
+import FstDecisionPending from "./full-screen-transition/DECISION_PENDING.jsx";
+import FstFifty from "./full-screen-transition/FIFTY.jsx";
+import FstFour from "./full-screen-transition/FOUR.jsx";
+import FstHundred from "./full-screen-transition/HUNDRED.jsx";
+import FstNoBall from "./full-screen-transition/NO_BALL.jsx";
+import FstNotOut from "./full-screen-transition/NOT_OUT.jsx";
+import FstOut from "./full-screen-transition/OUT.jsx";
+import FstReplay from "./full-screen-transition/REPLAY.jsx";
+import FstSix from "./full-screen-transition/SIX.jsx";
+import FstWide from "./full-screen-transition/WIDE.jsx";
 import atStageSample from "../LowerThird/data/atStage.sample.js";
 import commentatorsSample from "../LowerThird/data/commentators.sample.js";
 import currentPartnershipSample from "../LowerThird/data/currentPartnership.sample.js";
@@ -77,14 +87,25 @@ import tourHitHundredsSample from "../TourHit/data/hundreds.sample.js";
 import tourHitRunsSample from "../TourHit/data/runs.sample.js";
 import tourHitSixesSample from "../TourHit/data/sixes.sample.js";
 import tourHitWicketsSample from "../TourHit/data/wickets.sample.js";
+import fstDecisionPendingSample from "../FullScreenTransition/data/decisionPending.sample.js";
+import fstFiftySample from "../FullScreenTransition/data/fifty.sample.js";
+import fstFourSample from "../FullScreenTransition/data/four.sample.js";
+import fstHundredSample from "../FullScreenTransition/data/hundred.sample.js";
+import fstNoBallSample from "../FullScreenTransition/data/noBall.sample.js";
+import fstNotOutSample from "../FullScreenTransition/data/notOut.sample.js";
+import fstOutSample from "../FullScreenTransition/data/out.sample.js";
+import fstReplaySample from "../FullScreenTransition/data/replay.sample.js";
+import fstSixSample from "../FullScreenTransition/data/six.sample.js";
+import fstWideSample from "../FullScreenTransition/data/wide.sample.js";
 
 export const LOWER_THIRD_PANEL_ROW_SIZE = 17;
 
-const CONTROLLER_CATEGORIES = ["lower-third", "tour-hit"];
+const CONTROLLER_CATEGORIES = ["lower-third", "tour-hit", "full-screen-transition"];
 
 const CONTROLLER_CATEGORY_LABELS = {
   "lower-third": "Lower Third",
   "tour-hit": "Tour-Hit",
+  "full-screen-transition": "Full Screen Transition",
 };
 
 /** @type {Array<{ id: string, label: string, component: import('react').ComponentType, getProps: () => Record<string, unknown> }>} */
@@ -338,6 +359,72 @@ const TOUR_HIT_CONTROLLERS = [
   },
 ];
 
+/**
+ * Full Screen Transition — scorecard strip + full-viewport action overlay.
+ */
+const FULL_SCREEN_TRANSITION_CONTROLLERS = [
+  {
+    id: "four",
+    label: "Four",
+    component: FstFour,
+    getProps: () => ({ match: fstFourSample }),
+  },
+  {
+    id: "six",
+    label: "Six",
+    component: FstSix,
+    getProps: () => ({ match: fstSixSample }),
+  },
+  {
+    id: "not-out",
+    label: "Not Out",
+    component: FstNotOut,
+    getProps: () => ({ match: fstNotOutSample }),
+  },
+  {
+    id: "out",
+    label: "Out",
+    component: FstOut,
+    getProps: () => ({ match: fstOutSample }),
+  },
+  {
+    id: "no-ball",
+    label: "No-Ball",
+    component: FstNoBall,
+    getProps: () => ({ match: fstNoBallSample }),
+  },
+  {
+    id: "wide",
+    label: "Wide",
+    component: FstWide,
+    getProps: () => ({ match: fstWideSample }),
+  },
+  {
+    id: "fifty",
+    label: "50",
+    component: FstFifty,
+    getProps: () => ({ match: fstFiftySample }),
+  },
+  {
+    id: "hundred",
+    label: "100",
+    component: FstHundred,
+    getProps: () => ({ match: fstHundredSample }),
+  },
+  {
+    id: "replay",
+    label: "Replay",
+    component: FstReplay,
+    getProps: () => ({ match: fstReplaySample }),
+  },
+  {
+    id: "decision-pending",
+    label: "Decision Pending",
+    component: FstDecisionPending,
+    getProps: () => ({ match: fstDecisionPendingSample }),
+  },
+];
+
 /** @type {Record<string, Record<string, import('react').ComponentType>>} */
 export const controllerRegistry = {
   "lower-third": Object.fromEntries(
@@ -345,6 +432,9 @@ export const controllerRegistry = {
   ),
   "tour-hit": Object.fromEntries(
     TOUR_HIT_CONTROLLERS.map(({ id, component }) => [id, component])
+  ),
+  "full-screen-transition": Object.fromEntries(
+    FULL_SCREEN_TRANSITION_CONTROLLERS.map(({ id, component }) => [id, component])
   ),
 };
 
@@ -358,6 +448,12 @@ export const controllerCatalog = [
   })),
   ...TOUR_HIT_CONTROLLERS.map(({ id, label, getProps }) => ({
     category: "tour-hit",
+    id,
+    label,
+    getProps,
+  })),
+  ...FULL_SCREEN_TRANSITION_CONTROLLERS.map(({ id, label, getProps }) => ({
+    category: "full-screen-transition",
     id,
     label,
     getProps,
