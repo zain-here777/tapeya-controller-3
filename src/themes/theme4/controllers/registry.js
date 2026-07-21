@@ -2,6 +2,7 @@ import AtStage from "./lower-third/AT_STAGE.jsx";
 import CurrentPartnership from "./lower-third/CURRENT_PARTNERSHIP.jsx";
 import Default from "./lower-third/DEFAULT.jsx";
 import Empty from "./lower-third/EMPTY.jsx";
+import Four from "./lower-third/FOUR.jsx";
 import FOW from "./lower-third/FOW.jsx";
 import IntroLT from "./lower-third/INTRO_LT.jsx";
 import Last12Balls from "./lower-third/LAST_12_BALLS.jsx";
@@ -15,9 +16,12 @@ import ResultLT from "./lower-third/RESULT_LT.jsx";
 import RunRate from "./lower-third/RUN_RATE.jsx";
 import ThisOver from "./lower-third/THIS_OVER.jsx";
 import TossLT from "./lower-third/TOSS_LT.jsx";
+import TournamentName from "./lower-third/TOURNAMENT_NAME.jsx";
+import WinPrediction from "./lower-third/WIN_PREDICTION.jsx";
 import atStageSample from "../LowerThird/data/atStage.sample.js";
 import currentPartnershipSample from "../LowerThird/data/currentPartnership.sample.js";
 import defaultSampleMatch from "../LowerThird/data/default.sample.js";
+import fourSample from "../LowerThird/data/four.sample.js";
 import fowSample from "../LowerThird/data/fow.sample.js";
 import introLtSample from "../LowerThird/data/introLt.sample.js";
 import last12BallsSample from "../LowerThird/data/last12Balls.sample.js";
@@ -31,6 +35,9 @@ import resultLtSample from "../LowerThird/data/resultLt.sample.js";
 import runRateSample from "../LowerThird/data/runRate.sample.js";
 import thisOverSample from "../LowerThird/data/thisOver.sample.js";
 import tossLtSample from "../LowerThird/data/tossLt.sample.js";
+import tournamentNameSample from "../LowerThird/data/tournamentName.sample.js";
+import winPredictionSample from "../LowerThird/data/winPrediction.sample.js";
+
 export const LOWER_THIRD_PANEL_ROW_SIZE = 6;
 
 const CONTROLLER_CATEGORIES = ["lower-third"];
@@ -114,6 +121,18 @@ const LOWER_THIRD_CONTROLLERS = [
     getProps: () => ({ match: currentPartnershipSample }),
   },
   {
+    id: "win-prediction",
+    label: "Win Prediction",
+    component: WinPrediction,
+    getProps: () => ({ match: winPredictionSample }),
+  },
+  {
+    id: "four",
+    label: "Four",
+    component: Four,
+    getProps: () => ({ match: fourSample }),
+  },
+  {
     id: "mini-scorecard",
     label: "Mini Scorecard",
     component: MiniScorecard,
@@ -130,6 +149,12 @@ const LOWER_THIRD_CONTROLLERS = [
     label: "Intro LT",
     component: IntroLT,
     getProps: () => ({ match: introLtSample }),
+  },
+  {
+    id: "tournament-name",
+    label: "Tournament Name",
+    component: TournamentName,
+    getProps: () => ({ match: tournamentNameSample }),
   },
   {
     id: "toss-lt",
