@@ -3,7 +3,7 @@ import { mergeConfig } from "../../../../shared/utils/mergeConfig.js";
 
 /** Accent colors per action — drives overlay mesh, ripples, and label glow. */
 export const FST_ACTION_ACCENTS = {
-  four: "#22c55e",
+  four: "#98b9d9",
   six: "#8b5cf6",
   "not-out": "#34d399",
   out: "#ef4444",

@@ -1,4 +1,5 @@
 import React from "react";
+import FourStingerOverlay from "./FourStingerOverlay.jsx";
 
 /**
  * Full-screen action overlay — velocity burst + typographic reveal (Theme 4).
@@ -14,6 +15,17 @@ export default function ActionMessageOverlay({
   variant = "four",
 }) {
   if (!label) return null;
+
+  if (variant === "four") {
+    return (
+      <div
+        className="t4-fst-action t4-fst-action--four"
+        style={{ "--t4-fst-accent": accent }}
+      >
+        <FourStingerOverlay label={label} />
+      </div>
+    );
+  }
 
   const text = String(label);
   const useBlockLabel = text.length > 8 || text.includes(" ");
