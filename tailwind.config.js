@@ -150,6 +150,31 @@ module.exports = {
           "0%": { transform: "translateY(4px)", opacity: "0.35" },
           "100%": { transform: "none", opacity: "1" },
         },
+        /* Theme 4 broadcast motion — subtle, premium, non-distracting */
+        t4FadeUp: {
+          "0%": { transform: "translateY(14px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        t4FadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        t4ScaleIn: {
+          "0%": { transform: "scale(0.96)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1" },
+        },
+        t4SlideLeft: {
+          "0%": { transform: "translateX(-28px)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        t4SlideRight: {
+          "0%": { transform: "translateX(28px)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        t4RiseSoft: {
+          "0%": { transform: "translateY(10px) scale(0.985)", opacity: "0" },
+          "100%": { transform: "translateY(0) scale(1)", opacity: "1" },
+        },
       },
       animation: {
         "score-pop": "scorePop 320ms cubic-bezier(0.22,1,0.36,1)",
@@ -167,6 +192,12 @@ module.exports = {
         "strike-blink": "strikeBlink 2.2s ease-in-out infinite",
         "ball-pop": "ballPop 380ms cubic-bezier(0.22,1,0.36,1) both",
         "soft-in": "softIn 420ms cubic-bezier(0.22,1,0.36,1) both",
+        "t4-fade-up": "t4FadeUp 560ms cubic-bezier(0.22,1,0.36,1) both",
+        "t4-fade-in": "t4FadeIn 480ms cubic-bezier(0.22,1,0.36,1) both",
+        "t4-scale-in": "t4ScaleIn 520ms cubic-bezier(0.22,1,0.36,1) both",
+        "t4-slide-left": "t4SlideLeft 580ms cubic-bezier(0.22,1,0.36,1) both",
+        "t4-slide-right": "t4SlideRight 580ms cubic-bezier(0.22,1,0.36,1) both",
+        "t4-rise-soft": "t4RiseSoft 600ms cubic-bezier(0.22,1,0.36,1) both",
       },
     },
   },

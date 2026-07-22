@@ -1,24 +1,17 @@
-import teamALogo from "../../../../shared/england-team.png";
-import teamBLogo from "../../../../shared/nz-team.png";
+import {
+  T4_TOURNAMENT,
+  T4_VENUE,
+  createIdentityMatch,
+} from "../../data/matchIdentity.js";
 
 /** Sample data for the Theme 4 TournamentName controller only. */
 const tournamentNameSample = {
-  tournament: "LAHORE SUMMER CUP",
-  venue: "LIVE FROM GADDAFI STADIUM LAHORE",
-  teamA: {
-    code: "ENG",
-    name: "England",
-    logoUrl: teamALogo,
-    theme: "gold",
-    colorKey: "teamA",
-  },
-  teamB: {
-    code: "NZ",
-    name: "New Zealand",
-    logoUrl: teamBLogo,
-    theme: "gold",
-    colorKey: "teamB",
-  },
+  ...createIdentityMatch({
+    teamA: { name: "England" },
+    teamB: { name: "New Zealand" },
+  }),
+  tournament: T4_TOURNAMENT,
+  venue: T4_VENUE,
 };
 
 export default tournamentNameSample;

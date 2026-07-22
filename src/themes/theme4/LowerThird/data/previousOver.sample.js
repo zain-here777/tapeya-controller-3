@@ -42,7 +42,7 @@ const previousOverSample = {
 
   featuredPlayer: {
     id: "f1",
-    name: "Prince",
+    name: "Henry",
     wickets: 0,
     runs: 7,
     overs: "0.4",

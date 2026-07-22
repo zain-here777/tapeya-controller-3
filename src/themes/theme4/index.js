@@ -14,7 +14,10 @@ import { theme4Config } from "./config/theme.config.js";
 
 async function loadStyles() {
   await import("./styles/theme4.css");
+  await import("./styles/motion.css");
   await import("./FullScreenTransition/styles/fst.css");
+  await import("./Breaks/styles/breaks.css");
+  await import("./Charts/styles/charts.css");
 }
 
 export default createThemeModule({

@@ -8,6 +8,6 @@ export const tournamentNameConfig = createLowerThirdConfig({
   id: "tournament-name",
   defaultTeamAColorKey: "teamA",
   defaultTeamBColorKey: "teamB",
-  defaultTournament: "LAHORE SUMMER CUP",
-  defaultVenue: "LIVE FROM GADDAFI STADIUM LAHORE",
+  defaultTournament: "ICC WORLD TEST CHAMPIONSHIP",
+  defaultVenue: "LIVE FROM LORD'S CRICKET GROUND",
 });

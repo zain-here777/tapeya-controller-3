@@ -1,0 +1,72 @@
+import React from "react";
+import { mergeConfig } from "../../../../shared/utils/mergeConfig.js";
+import FullScreenPageShell from "../components/FullScreenPageShell.jsx";
+import { panelStyle } from "../utils/fullScreenUi.js";
+import { t4Motion, t4StaggerStyle } from "../../utils/motion.js";
+
+/** Innings figures — 2×2 stat grid in NeedTarget-style card. */
+export default function InningsFigureCore({
+  match,
+  baseConfig,
+  config: configOverride = {},
+}) {
+  const figures = Array.isArray(match?.figures) ? match.figures : [];
+  if (!figures.length) return null;
+
+  mergeConfig(baseConfig, configOverride);
+
+  const tournament = match.tournament ?? "";
+  const matchup = match.matchup ?? "";
+  const cardStyle = panelStyle(match.team ?? {}, "batsman");
+
+  return (
+    <FullScreenPageShell>
+      <div className="mx-auto flex h-full w-full max-w-[calc(1480px*var(--t4-scale))] flex-col gap-[calc(28px*var(--t4-scale))] px-[calc(48px*var(--t4-scale))] py-[calc(36px*var(--t4-scale))]">
+        <header
+          className={`${t4Motion("fadeUp")} flex shrink-0 flex-col gap-[calc(4px*var(--t4-scale))]`}
+          style={t4StaggerStyle(0)}
+        >
+          {matchup ? (
+            <h1 className="text-[calc(40px*var(--t4-scale))] font-black uppercase text-[#f8fafc]">
+              {matchup}
+            </h1>
+          ) : null}
+          {tournament ? (
+            <p className="text-[calc(20px*var(--t4-scale))] font-semibold uppercase text-[#7dd3fc]">
+              {tournament}
+            </p>
+          ) : null}
+        </header>
+
+        <div
+          className={`${t4Motion("riseSoft")} relative mx-auto my-auto flex w-full max-w-[calc(920px*var(--t4-scale))] flex-col items-center`}
+          style={t4StaggerStyle(1, 120)}
+        >
+          <div
+            className="relative flex w-full flex-col items-center justify-center rounded-[calc(14px*var(--t4-scale))] border border-white/20 px-[calc(64px*var(--t4-scale))] py-[calc(48px*var(--t4-scale))] shadow-[0_0_calc(40px*var(--t4-scale))_rgba(0,0,0,0.35)]"
+            style={cardStyle}
+          >
+            <div className="grid w-full grid-cols-2 gap-x-[calc(64px*var(--t4-scale))] gap-y-[calc(40px*var(--t4-scale))]">
+              {figures.map((figure, index) => (
+                <div
+                  key={figure.label}
+                  className={`${t4Motion("scaleIn")} flex min-w-0 flex-col items-center gap-[calc(14px*var(--t4-scale))]`}
+                  style={t4StaggerStyle(index, 180, 80)}
+                >
+                  <span className="flex min-w-[calc(88px*var(--t4-scale))] items-center justify-center rounded-[calc(6px*var(--t4-scale))] border border-white/20 bg-black/35 px-[calc(16px*var(--t4-scale))] py-[calc(8px*var(--t4-scale))]">
+                    <span className="text-[calc(16px*var(--t4-scale))] font-bold uppercase tracking-[calc(1.5px*var(--t4-scale))] text-[#f8fafc]">
+                      {figure.label}
+                    </span>
+                  </span>
+                  <span className="text-center text-[calc(96px*var(--t4-scale))] font-black uppercase tabular-nums leading-[0.9] text-[#f8fafc]">
+                    {figure.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </FullScreenPageShell>
+  );
+}

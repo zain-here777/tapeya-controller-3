@@ -1,0 +1,164 @@
+/* Theme 4 Break ambient background — animation CSS only */
+
+[data-theme="theme4"] .t4-break-bg {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+[data-theme="theme4"] .t4-break-bg-base {
+  position: absolute;
+  inset: -8%;
+  background: radial-gradient(
+    ellipse 120% 80% at 50% 20%,
+    #0f2847 0%,
+    #0b1220 45%,
+    #050810 100%
+  );
+  animation: t4-break-base-shift 10s ease-in-out infinite;
+}
+
+[data-theme="theme4"] .t4-break-bg-beam {
+  position: absolute;
+  width: 160%;
+  height: calc(64px * var(--t4-scale));
+  opacity: 0.7;
+  filter: blur(calc(18px * var(--t4-scale)));
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(14, 165, 233, 0.75),
+    rgba(125, 211, 252, 0.55),
+    rgba(14, 165, 233, 0.35),
+    transparent
+  );
+  will-change: transform, opacity;
+}
+
+[data-theme="theme4"] .t4-break-bg-beam--a {
+  top: 16%;
+  left: -30%;
+  transform: rotate(-10deg);
+  animation: t4-break-beam-a 6s ease-in-out infinite;
+}
+
+[data-theme="theme4"] .t4-break-bg-beam--b {
+  bottom: 18%;
+  left: -30%;
+  transform: rotate(8deg);
+  animation: t4-break-beam-b 7.5s ease-in-out infinite;
+}
+
+[data-theme="theme4"] .t4-break-bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(calc(48px * var(--t4-scale)));
+  will-change: transform, opacity;
+}
+
+[data-theme="theme4"] .t4-break-bg-glow--a {
+  top: -15%;
+  right: -10%;
+  width: 55%;
+  height: 45%;
+  background: radial-gradient(
+    circle,
+    rgba(14, 165, 233, 0.55) 0%,
+    rgba(56, 189, 248, 0.2) 45%,
+    transparent 70%
+  );
+  animation: t4-break-glow-a 7s ease-in-out infinite;
+}
+
+[data-theme="theme4"] .t4-break-bg-glow--b {
+  bottom: -20%;
+  left: -15%;
+  width: 60%;
+  height: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(3, 105, 161, 0.7) 0%,
+    rgba(15, 40, 71, 0.55) 40%,
+    transparent 65%
+  );
+  animation: t4-break-glow-b 9s ease-in-out infinite;
+}
+
+[data-theme="theme4"] .t4-break-bg-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 35%,
+    rgba(5, 8, 16, 0.5) 100%
+  );
+}
+
+@keyframes t4-break-base-shift {
+  0%,
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.06) translate(2%, -1.5%);
+  }
+}
+
+@keyframes t4-break-beam-a {
+  0%,
+  100% {
+    transform: rotate(-10deg) translateX(-18%);
+    opacity: 0.35;
+  }
+  50% {
+    transform: rotate(-10deg) translateX(22%);
+    opacity: 0.9;
+  }
+}
+
+@keyframes t4-break-beam-b {
+  0%,
+  100% {
+    transform: rotate(8deg) translateX(20%);
+    opacity: 0.3;
+  }
+  50% {
+    transform: rotate(8deg) translateX(-24%);
+    opacity: 0.85;
+  }
+}
+
+@keyframes t4-break-glow-a {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(-12%, 10%, 0) scale(1.28);
+  }
+}
+
+@keyframes t4-break-glow-b {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translate3d(14%, -12%, 0) scale(1.22);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="theme4"] .t4-break-bg-base,
+  [data-theme="theme4"] .t4-break-bg-beam--a,
+  [data-theme="theme4"] .t4-break-bg-beam--b,
+  [data-theme="theme4"] .t4-break-bg-glow--a,
+  [data-theme="theme4"] .t4-break-bg-glow--b {
+    animation: none !important;
+  }
+}

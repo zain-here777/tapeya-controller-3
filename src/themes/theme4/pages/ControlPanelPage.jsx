@@ -82,7 +82,7 @@ export default function Theme4ControlPanelPage() {
       </header>
 
       <main className="t4-control-panel-main">
-        {groups.map(({ category, label, controllers }) => {
+        {groups.map(({ category, label, controllers, groups: subGroups }) => {
           const rows =
             category === "lower-third"
               ? chunkControllers(controllers, rowSize)
@@ -94,8 +94,25 @@ export default function Theme4ControlPanelPage() {
                 {label}
               </h2>
 
-              {controllers.length === 0 ? (
+              {controllers.length === 0 && !subGroups ? (
                 <p className="t4-control-panel-empty">No controllers yet</p>
+              ) : subGroups ? (
+                <div className="t4-panel-subgroups">
+                  {subGroups.map(({ group, label: groupLabel, controllers: groupControllers }) => (
+                    <div key={`${category}-${group}`}>
+                      <h3 className="t4-control-panel-subgroup-title">{groupLabel}</h3>
+                      {groupControllers.length === 0 ? (
+                        <p className="t4-control-panel-empty">No controllers yet</p>
+                      ) : (
+                        <ControllerButtonRow
+                          controllers={groupControllers}
+                          active={active}
+                          onSelect={writeActiveController}
+                        />
+                      )}
+                    </div>
+                  ))}
+                </div>
               ) : (
                 <div className="t4-panel-rows">
                   {rows.map((row, rowIndex) => (

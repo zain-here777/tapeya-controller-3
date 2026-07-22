@@ -7,5 +7,5 @@ export const introLtConfig = createLowerThirdConfig({
   id: "intro-lt",
   defaultTeamAColorKey: "teamA",
   defaultTeamBColorKey: "teamB",
-  defaultTournament: "LAHORE SUMMER CUP",
+  defaultTournament: "ICC WORLD TEST CHAMPIONSHIP",
 });

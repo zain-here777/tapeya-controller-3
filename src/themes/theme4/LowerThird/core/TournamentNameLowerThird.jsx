@@ -28,7 +28,7 @@ export default function TournamentNameLowerThird({
   const teamBColor = resolveTeamColor(match.teamB.colorKey, teamBFallback);
 
   const tournament =
-    match.tournament ?? config.defaultTournament ?? "LAHORE SUMMER CUP";
+    match.tournament ?? config.defaultTournament ?? "ICC WORLD TEST CHAMPIONSHIP";
   const venue = match.venue ?? config.defaultVenue ?? "";
 
   return (

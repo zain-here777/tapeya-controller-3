@@ -22,7 +22,53 @@ export default function ControllerHost({ category, id, ...props }) {
     );
   }
 
-  if (category === "full-screen-transition") {
+  if (category === "full-screen-transition" || category === "breaks") {
+    return (
+      <FullScreenTransitionEnter animKey={`${category}/${id}`}>
+        <Controller {...props} />
+      </FullScreenTransitionEnter>
+    );
+  }
+
+  if (category === "full-screen") {
+    if (id === "top-batter" || id === "top-bowler") {
+      return (
+        <TournamentEnter animKey={`${category}/${id}`}>
+          <Controller {...props} />
+        </TournamentEnter>
+      );
+    }
+    return (
+      <FullScreenTransitionEnter animKey={`${category}/${id}`}>
+        <Controller {...props} />
+      </FullScreenTransitionEnter>
+    );
+  }
+
+  if (category === "tournaments") {
+    return (
+      <TournamentEnter animKey={`${category}/${id}`}>
+        <Controller {...props} />
+      </TournamentEnter>
+    );
+  }
+
+  if (category === "charts") {
+    return (
+      <ChartEnter animKey={`${category}/${id}`}>
+        <Controller {...props} />
+      </ChartEnter>
+    );
+  }
+
+  if (category === "player-stats") {
+    if (String(id).endsWith("-lt")) {
+      return (
+        <LowerThirdEnter animKey={`${category}/${id}`}>
+          <Controller {...props} />
+        </LowerThirdEnter>
+      );
+    }
     return (
       <FullScreenTransitionEnter animKey={`${category}/${id}`}>
         <Controller {...props} />
@@ -62,6 +108,52 @@ function FullScreenTransitionEnter({ animKey, children }) {
       className={`t4-fst-enter-shell${done ? " t4-fst-enter-shell--done" : ""}`}
     >
       <div key={animKey} className="t4-fst-enter" onAnimationEnd={() => setDone(true)}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/** Cascade reveal for tournament boards — distinct from FST/Breaks fade. */
+function TournamentEnter({ animKey, children }) {
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    setDone(false);
+  }, [animKey]);
+
+  return (
+    <div className={`t4-tlb-enter-shell${done ? " t4-tlb-enter-shell--done" : ""}`}>
+      <div
+        key={animKey}
+        className="t4-tlb-enter"
+        onAnimationEnd={(event) => {
+          if (event.target === event.currentTarget) setDone(true);
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/** Page fade + internal stagger handled in charts.css */
+function ChartEnter({ animKey, children }) {
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    setDone(false);
+  }, [animKey]);
+
+  return (
+    <div className={`t4-chart-enter-shell${done ? " t4-chart-enter-shell--done" : ""}`}>
+      <div
+        key={animKey}
+        className="t4-chart-enter"
+        onAnimationEnd={(event) => {
+          if (event.target === event.currentTarget) setDone(true);
+        }}
+      >
         {children}
       </div>
     </div>

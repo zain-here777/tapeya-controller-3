@@ -30,7 +30,7 @@ export default function IntroLTLowerThird({
   const teamBColor = resolveTeamColor(match.teamB.colorKey, teamBFallback);
 
   const tournament =
-    match.tournament ?? config.defaultTournament ?? "LAHORE SUMMER CUP";
+    match.tournament ?? config.defaultTournament ?? "ICC WORLD TEST CHAMPIONSHIP";
 
   return (
     <div className="w-full shrink-0 select-none font-montserrat">
