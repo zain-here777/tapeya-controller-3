@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * ECB-style chapter stinger — hard wipe plate + mega-type horizontal pass (Theme 4 FST Four).
+ * ECB-style stinger → dock: wipe plate, mega-type pass, settle above lower third (Theme 4 FST Four).
  *
  * @param {Object} props
  * @param {string} props.label
@@ -12,8 +12,12 @@ export default function FourStingerOverlay({ label = "FOUR" }) {
 
   return (
     <div className="t4-fst-four-stinger" aria-live="polite">
-      <div className="t4-fst-four-plate" aria-hidden="true" />
-      <p className="t4-fst-four-mega">{text}</p>
+      <div className="t4-fst-four-plate-clip" aria-hidden="true">
+        <div className="t4-fst-four-plate" />
+      </div>
+      <div className="t4-fst-four-morph" aria-hidden="false">
+        <span className="t4-fst-four-morph-text">{text}</span>
+      </div>
     </div>
   );
 }
