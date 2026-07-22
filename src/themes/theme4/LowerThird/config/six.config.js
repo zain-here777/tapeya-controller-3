@@ -4,4 +4,5 @@ import { createActionBannerConfig } from "./actionBanner.shared.js";
 export const sixConfig = createActionBannerConfig({
   id: "six",
   fallbackLabel: "Six",
+  showConfetti: true,
 });

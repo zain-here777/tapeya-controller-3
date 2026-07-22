@@ -18,8 +18,11 @@ export default function ActionBannerLabel({ label, index, compact }) {
   return (
     <div className="relative z-[2] flex h-full min-w-0 items-center justify-center overflow-hidden px-[calc(8px*var(--t4-scale))]">
       <span
-        className={`t4-action-banner-label motion-reduce:animate-none inline-block text-center font-bold uppercase leading-none text-white ${textSize}`}
-        style={{ animationDelay: ANIMATION_DELAYS[index] ?? "0ms" }}
+        className={`t4-action-banner-label motion-reduce:animate-none inline-block text-center font-bold uppercase leading-none ${textSize}`}
+        style={{
+          animationDelay: ANIMATION_DELAYS[index] ?? "0ms",
+          color: "currentColor",
+        }}
       >
         {label}
       </span>

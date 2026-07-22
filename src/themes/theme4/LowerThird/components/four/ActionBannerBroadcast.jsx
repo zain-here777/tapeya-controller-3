@@ -11,11 +11,13 @@ import BroadcastFourHero from "./BroadcastFourHero.jsx";
  * @param {string} props.label
  * @param {Record<string, string>} props.broadcastVars
  * @param {boolean} props.compact
+ * @param {boolean} [props.showConfetti]
  */
 export default function ActionBannerBroadcast({
   label,
   broadcastVars,
   compact,
+  showConfetti = false,
 }) {
   const displayLabel = String(label || "Four").toUpperCase();
   const heroSize = compact
@@ -36,7 +38,7 @@ export default function ActionBannerBroadcast({
           <div className="t4-broadcast-bar-streak t4-broadcast-bar-streak--a motion-reduce:animate-none" />
           <div className="t4-broadcast-bar-streak t4-broadcast-bar-streak--b motion-reduce:animate-none" />
         </div>
-        <ActionBannerConfetti />
+        {showConfetti ? <ActionBannerConfetti /> : null}
       </div>
 
       <div

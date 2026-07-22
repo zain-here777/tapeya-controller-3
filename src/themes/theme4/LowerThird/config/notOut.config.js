@@ -4,4 +4,5 @@ import { createActionBannerConfig } from "./actionBanner.shared.js";
 export const notOutConfig = createActionBannerConfig({
   id: "not-out",
   fallbackLabel: "Not Out",
+  showConfetti: true,
 });

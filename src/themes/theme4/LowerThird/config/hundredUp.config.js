@@ -4,4 +4,6 @@ import { createActionBannerConfig } from "./actionBanner.shared.js";
 export const hundredUpConfig = createActionBannerConfig({
   id: "100-up",
   fallbackLabel: "100 Up",
+  accentKey: "hundred",
+  showConfetti: true,
 });

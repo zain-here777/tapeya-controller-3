@@ -1,22 +1,12 @@
 import { createLowerThirdConfig } from "../../LowerThird/config/shared.config.js";
 import { mergeConfig } from "../../../../shared/utils/mergeConfig.js";
+import {
+  T4_ACTION_PLATE,
+  resolveActionPlateColor,
+} from "../../config/actionAccents.js";
 
-/**
- * Soft plate colors per action — powder wipe + dock badge (dark navy ink).
- * Kept light so mega type stays readable like the ECB chapter stinger.
- */
-export const FST_ACTION_ACCENTS = {
-  four: "#98b9d9",
-  six: "#c4b5fd",
-  "not-out": "#86efac",
-  out: "#fca5a5",
-  "no-ball": "#fcd34d",
-  wide: "#fde68a",
-  fifty: "#fde047",
-  hundred: "#fef08a",
-  replay: "#7dd3fc",
-  "decision-pending": "#fdba74",
-};
+/** @deprecated Prefer T4_ACTION_PLATE — kept for existing FST imports. */
+export const FST_ACTION_ACCENTS = T4_ACTION_PLATE;
 
 /**
  * Animation identity per controller — shared stinger motion, unique plate tint.
@@ -37,7 +27,7 @@ export const FST_ANIMATION_VARIANTS = {
 
 export const fstSharedConfig = {
   actionLabel: "FOUR",
-  actionAccent: FST_ACTION_ACCENTS.four,
+  actionAccent: resolveActionPlateColor("four"),
   animationVariant: FST_ANIMATION_VARIANTS.four,
   defaultBattingColorKey: "teamA",
   defaultBowlingColorKey: "teamB",
