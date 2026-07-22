@@ -1,13 +1,13 @@
 import React from "react";
 import { mergeConfig } from "../../../../shared/utils/mergeConfig.js";
 import FullScreenPageShell from "../components/FullScreenPageShell.jsx";
-import Playing11TeamPanel from "../components/Playing11TeamPanel.jsx";
+import Playing11TeamBar from "../components/Playing11TeamBar.jsx";
+import Playing11PlayerGrid from "../components/Playing11PlayerGrid.jsx";
+import { P11_SECTION_DIVIDER } from "../utils/playing11Layout.js";
+import { T4_LOGO_TILE } from "../utils/fullScreenUi.js";
 import { t4Motion, t4StaggerStyle } from "../../utils/motion.js";
 
 /**
- * Resolve panel tone the same way Theme 3 Playing11 does:
- * teamA defaults to batsman; teamB defaults to bowler.
- *
  * @param {Object} [team]
  * @param {"batsman"|"bowler"} fallback
  */
@@ -18,13 +18,7 @@ function resolvePanelTone(team, fallback) {
 }
 
 /**
- * Playing11 — full-screen Playing XI for both teams.
- * Structure/data flow mirrors Theme 3; visuals stay Theme 4.
- *
- * @param {Object} props
- * @param {Object} props.match
- * @param {Object} props.baseConfig
- * @param {Object} [props.config]
+ * Playing11 — broadcast board layout (reference hierarchy) with Theme 4 styling.
  */
 export default function Playing11Core({
   match,
@@ -36,38 +30,71 @@ export default function Playing11Core({
   const config = mergeConfig(baseConfig, configOverride);
   const title = match.title ?? config.title ?? "PLAYING XI";
   const tournament = match.tournament ?? "";
+  const tournamentLogoUrl = match.tournamentLogoUrl ?? config.tournamentLogoUrl;
+
+  const toneA = resolvePanelTone(match.teamA, "batsman");
+  const toneB = resolvePanelTone(match.teamB, "bowler");
 
   return (
     <FullScreenPageShell>
-      <div className="mx-auto flex h-full w-full max-w-[calc(1400px*var(--t4-scale))] flex-col justify-center gap-[calc(32px*var(--t4-scale))] px-[calc(48px*var(--t4-scale))] py-[calc(40px*var(--t4-scale))] max-[900px]:gap-[calc(24px*var(--t4-scale))] max-[900px]:px-[calc(24px*var(--t4-scale))] max-[900px]:py-[calc(28px*var(--t4-scale))]">
-        <header
-          className={`${t4Motion("fadeUp")} flex flex-col gap-[calc(8px*var(--t4-scale))]`}
-          style={t4StaggerStyle(0)}
+      <div className="mx-auto flex h-full w-full max-w-[calc(1400px*var(--t4-scale))] flex-col justify-center px-[calc(48px*var(--t4-scale))] py-[calc(40px*var(--t4-scale))] max-[900px]:px-[calc(24px*var(--t4-scale))] max-[900px]:py-[calc(28px*var(--t4-scale))]">
+        <div
+          className={`${t4Motion("fadeIn")} flex min-h-0 flex-1 flex-col overflow-hidden rounded-[calc(8px*var(--t4-scale))] border border-[var(--t4-divider)] shadow-[0_calc(24px*var(--t4-scale))_calc(80px*var(--t4-scale))_rgba(0,0,0,0.45)]`}
+          style={t4StaggerStyle(0, 40)}
         >
-          {title ? (
-            <h1 className="m-0 text-[calc(44px*var(--t4-scale))] font-black uppercase leading-[1.05] tracking-[calc(2px*var(--t4-scale))] text-[#f8fafc] max-[900px]:text-[calc(34px*var(--t4-scale))]">
-              {title}
-            </h1>
-          ) : null}
-          {tournament ? (
-            <p className="m-0 text-[calc(22px*var(--t4-scale))] font-semibold uppercase leading-[1.15] tracking-[calc(1.2px*var(--t4-scale))] text-[#7dd3fc] max-[900px]:text-[calc(18px*var(--t4-scale))]">
-              {tournament}
-            </p>
-          ) : null}
-        </header>
+          <header
+            className={`${t4Motion("fadeUp")} flex shrink-0 items-center justify-between gap-[calc(24px*var(--t4-scale))] border-b ${P11_SECTION_DIVIDER} bg-[#070E35] px-[calc(28px*var(--t4-scale))] py-[calc(24px*var(--t4-scale))] max-[900px]:flex-col max-[900px]:items-start max-[900px]:px-[calc(20px*var(--t4-scale))] max-[900px]:py-[calc(18px*var(--t4-scale))]`}
+            style={t4StaggerStyle(0)}
+          >
+            <div className="flex min-w-0 flex-col gap-[calc(8px*var(--t4-scale))]">
+              {title ? (
+                <h1 className="m-0 text-[calc(40px*var(--t4-scale))] font-black uppercase leading-[1.05] tracking-[calc(2px*var(--t4-scale))] text-[#f8fafc] max-[900px]:text-[calc(30px*var(--t4-scale))]">
+                  {title}
+                </h1>
+              ) : null}
+              {tournament ? (
+                <p className="m-0 text-[calc(20px*var(--t4-scale))] font-normal uppercase leading-[1.2] tracking-[calc(0.8px*var(--t4-scale))] text-[#f8fafc]/92 max-[900px]:text-[calc(16px*var(--t4-scale))]">
+                  {tournament}
+                </p>
+              ) : null}
+            </div>
 
-        <div className="flex w-full items-start gap-[calc(28px*var(--t4-scale))] max-[1100px]:flex-col max-[1100px]:gap-[calc(20px*var(--t4-scale))]">
-          <Playing11TeamPanel
-            team={match.teamA}
-            tone={resolvePanelTone(match.teamA, "batsman")}
-            className={t4Motion("slideLeft")}
-            style={t4StaggerStyle(1, 120)}
-          />
-          <Playing11TeamPanel
-            team={match.teamB}
-            tone={resolvePanelTone(match.teamB, "bowler")}
-            className={t4Motion("slideRight")}
-            style={t4StaggerStyle(2, 120)}
+            {tournamentLogoUrl ? (
+              <div
+                className={`${T4_LOGO_TILE} h-[calc(56px*var(--t4-scale))] max-w-[calc(200px*var(--t4-scale))] shrink-0 px-[calc(12px*var(--t4-scale))] py-[calc(6px*var(--t4-scale))]`}
+              >
+                <img
+                  src={tournamentLogoUrl}
+                  alt={tournament || "Tournament"}
+                  className="h-full w-full object-contain"
+                />
+              </div>
+            ) : tournament ? (
+              <div
+                className={`${T4_LOGO_TILE} flex h-[calc(52px*var(--t4-scale))] shrink-0 items-center justify-center px-[calc(16px*var(--t4-scale))]`}
+                aria-hidden="true"
+              >
+                <span className="text-[calc(13px*var(--t4-scale))] font-bold uppercase tracking-[calc(1px*var(--t4-scale))] text-[#0f2847]">
+                  {tournament.split(" ").slice(0, 2).join(" ")}
+                </span>
+              </div>
+            ) : null}
+          </header>
+
+          <div className={t4Motion("fadeUp")} style={t4StaggerStyle(1, 80)}>
+            <Playing11TeamBar
+              teamA={match.teamA}
+              teamB={match.teamB}
+              toneA={toneA}
+              toneB={toneB}
+            />
+          </div>
+
+          <Playing11PlayerGrid
+            teamA={match.teamA}
+            teamB={match.teamB}
+            toneA={toneA}
+            toneB={toneB}
           />
         </div>
       </div>
