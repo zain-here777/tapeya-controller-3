@@ -1,22 +1,25 @@
 import { createLowerThirdConfig } from "../../LowerThird/config/shared.config.js";
 import { mergeConfig } from "../../../../shared/utils/mergeConfig.js";
 
-/** Accent colors per action — drives overlay mesh, ripples, and label glow. */
+/**
+ * Soft plate colors per action — powder wipe + dock badge (dark navy ink).
+ * Kept light so mega type stays readable like the ECB chapter stinger.
+ */
 export const FST_ACTION_ACCENTS = {
   four: "#98b9d9",
-  six: "#8b5cf6",
-  "not-out": "#34d399",
-  out: "#ef4444",
-  "no-ball": "#f59e0b",
-  wide: "#fbbf24",
-  fifty: "#eab308",
-  hundred: "#fde047",
-  replay: "#38bdf8",
-  "decision-pending": "#fb923c",
+  six: "#c4b5fd",
+  "not-out": "#86efac",
+  out: "#fca5a5",
+  "no-ball": "#fcd34d",
+  wide: "#fde68a",
+  fifty: "#fde047",
+  hundred: "#fef08a",
+  replay: "#7dd3fc",
+  "decision-pending": "#fdba74",
 };
 
 /**
- * Animation identity per controller — unique motion, shared visual language.
+ * Animation identity per controller — shared stinger motion, unique plate tint.
  * @type {Record<string, string>}
  */
 export const FST_ANIMATION_VARIANTS = {
