@@ -28,6 +28,9 @@ export default function ActionStingerOverlay({ label = "FOUR", variant = "four" 
       aria-live="polite"
     >
       <div className="t4-fst-stinger-plate-clip" aria-hidden="true">
+        <div className="t4-fst-stinger-plate t4-fst-stinger-plate--trail motion-reduce:hidden">
+          <div className="t4-fst-stinger-plate-trail-fill" />
+        </div>
         <div className="t4-fst-stinger-plate">
           <div className="t4-fst-stinger-plate-base motion-reduce:hidden" />
           <div className="t4-fst-stinger-plate-shift motion-reduce:hidden" />
@@ -37,6 +40,11 @@ export default function ActionStingerOverlay({ label = "FOUR", variant = "four" 
           <div className="t4-fst-stinger-plate-shimmer motion-reduce:hidden" />
           <div className="t4-fst-stinger-plate-shimmer t4-fst-stinger-plate-shimmer--b motion-reduce:hidden" />
           <div className="t4-fst-stinger-plate-energy motion-reduce:hidden" />
+          <div className="t4-fst-stinger-plate-grain motion-reduce:hidden" />
+          <div className="t4-fst-stinger-plate-flash motion-reduce:hidden" />
+          <div className="t4-fst-stinger-plate-wipe-edge motion-reduce:hidden" />
+          <div className="t4-fst-stinger-plate-scan motion-reduce:hidden" />
+          <div className="t4-fst-stinger-plate-vignette motion-reduce:hidden" />
         </div>
       </div>
       <div className="t4-fst-stinger-morph">
