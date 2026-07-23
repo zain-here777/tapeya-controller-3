@@ -50,7 +50,7 @@
   z-index: 1;
   --t4-fst-accent: #98b9d9;
   --t4-fst-stinger-plate: var(--t4-fst-accent);
-  --t4-fst-stinger-ink: #0f2744;
+  --t4-fst-stinger-ink: #ffffff;
   --t4-fst-stinger-loop: 8s;
   --t4-fst-stinger-ease-plate: cubic-bezier(0.45, 0, 0.25, 1);
   --t4-fst-stinger-ease-morph: cubic-bezier(0.33, 0, 0.2, 1);
