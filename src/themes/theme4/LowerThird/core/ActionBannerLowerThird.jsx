@@ -5,8 +5,8 @@ import {
   resolveActionPlateColor,
 } from "../../config/actionAccents.js";
 import { actionPlateBroadcastPalette } from "../utils/teamBroadcastPalette.js";
+import ActionBannerBackground from "../components/four/ActionBannerBackground.jsx";
 import ActionBannerBroadcast from "../components/four/ActionBannerBroadcast.jsx";
-import ActionBannerConfetti from "../components/four/ActionBannerConfetti.jsx";
 import ActionBannerLabel from "../components/four/ActionBannerLabel.jsx";
 
 /**
@@ -66,10 +66,10 @@ export default function ActionBannerLowerThird({
   return (
     <div className="w-full shrink-0 select-none font-montserrat">
       <div
-        className="relative flex h-[var(--t4-bar-height)] w-full items-center overflow-hidden shadow-[0_-2px_10px_rgba(0,0,0,0.12)]"
-        style={{ backgroundColor: plate, color: ink }}
+        className="t4-broadcast-bar relative flex h-[var(--t4-bar-height)] w-full items-center overflow-hidden shadow-[0_-2px_10px_rgba(0,0,0,0.12)]"
+        style={{ ...broadcastVars, color: ink }}
       >
-        {showConfetti ? <ActionBannerConfetti /> : null}
+        <ActionBannerBackground showConfetti={showConfetti} />
 
         <div className="relative z-[2] grid h-full w-full grid-cols-4 items-center">
           {labels.slice(0, 4).map((label, index) => (

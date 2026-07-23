@@ -1,5 +1,5 @@
 import React from "react";
-import ActionBannerConfetti from "./ActionBannerConfetti.jsx";
+import ActionBannerBackground from "./ActionBannerBackground.jsx";
 import BroadcastCrossText from "./BroadcastCrossText.jsx";
 import BroadcastFourHero from "./BroadcastFourHero.jsx";
 
@@ -24,22 +24,15 @@ export default function ActionBannerBroadcast({
     ? "text-[calc(36px*var(--t4-scale))]"
     : "text-[calc(58px*var(--t4-scale))]";
   const tripleSize = compact
-    ? "text-[calc(28px*var(--t4-scale))]"
-    : "text-[calc(52px*var(--t4-scale))]";
+    ? "text-[calc(34px*var(--t4-scale))]"
+    : "text-[calc(66px*var(--t4-scale))]";
 
   return (
     <div
       className="t4-broadcast-bar relative h-full w-full overflow-visible"
       style={broadcastVars}
     >
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="t4-broadcast-bar-bg absolute inset-0">
-          <div className="t4-broadcast-bar-texture" />
-          <div className="t4-broadcast-bar-streak t4-broadcast-bar-streak--a motion-reduce:animate-none" />
-          <div className="t4-broadcast-bar-streak t4-broadcast-bar-streak--b motion-reduce:animate-none" />
-        </div>
-        {showConfetti ? <ActionBannerConfetti /> : null}
-      </div>
+      <ActionBannerBackground showConfetti={showConfetti} />
 
       <div
         className="t4-broadcast-four-sequence relative z-[2] h-full w-full overflow-visible"
@@ -51,7 +44,11 @@ export default function ActionBannerBroadcast({
         <div className="t4-broadcast-four-triple motion-reduce:opacity-100">
           {[0, 1, 2].map((index) => (
             <div key={index} className="t4-broadcast-four-triple-cell">
-              <BroadcastCrossText label={displayLabel} textSize={tripleSize} />
+              <BroadcastCrossText
+                label={displayLabel}
+                textSize={tripleSize}
+                emphasis
+              />
             </div>
           ))}
         </div>

@@ -1,18 +1,18 @@
 /**
- * Soft plate colors shared by Theme 4 Full Screen Transition + Lower Third actions.
- * Light plates with dark navy ink (ECB chapter / dock language).
+ * Action plate colors — Theme 4 FST + Lower Third actions.
+ * Saturated / broadcast-primary hues (Out = red, Four = blue, etc.).
  */
 export const T4_ACTION_PLATE = {
-  four: "#98b9d9",
-  six: "#c4b5fd",
-  "not-out": "#86efac",
-  out: "#fca5a5",
-  "no-ball": "#fcd34d",
-  wide: "#fde68a",
-  fifty: "#fde047",
-  hundred: "#fef08a",
-  replay: "#7dd3fc",
-  "decision-pending": "#fdba74",
+  four: "#1565d8",
+  six: "#7c3aed",
+  "not-out": "#16a34a",
+  out: "#e60000",
+  "no-ball": "#f5c400",
+  wide: "#f59e0b",
+  fifty: "#eab308",
+  hundred: "#fbbf24",
+  replay: "#0284c7",
+  "decision-pending": "#ea580c",
 };
 
 export const T4_ACTION_INK = "#0f2744";

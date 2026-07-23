@@ -26,29 +26,32 @@ export function teamBroadcastPalette(primaryHex, secondaryHex) {
 }
 
 /**
- * Broadcast palette from an FST action plate color (light bg + navy ink).
+ * Broadcast palette from an action plate — vivid hue-forward (dark edges, saturated core).
  *
  * @param {string} plateHex
  * @param {string} [inkHex]
  */
-export function actionPlateBroadcastPalette(plateHex, inkHex = "#0f2744") {
+export function actionPlateBroadcastPalette(plateHex, _inkHex = "#0f2744") {
   const plate = normalizeHex(plateHex);
-  const ink = normalizeHex(inkHex);
-  const mid = mixHex(plate, "#ffffff", 0.08);
-  const deep = mixHex(plate, ink, 0.12);
-  const highlight = mixHex(plate, "#ffffff", 0.28);
-  const accent = mixHex(plate, ink, 0.22);
+  const deep = mixHex(plate, "#000000", 0.62);
+  const base = mixHex(plate, "#000000", 0.42);
+  const mid = mixHex(plate, "#000000", 0.18);
+  const accent = plate;
+  const vivid = mixHex(plate, "#ffffff", 0.14);
+  const highlight = mixHex(plate, "#ffffff", 0.38);
+  const textDepth = mixHex(plate, "#000000", 0.72);
 
   return {
-    "--t4-broadcast-team-a": plate,
+    "--t4-broadcast-team-a": base,
     "--t4-broadcast-team-b": mid,
     "--t4-broadcast-team-mid": mid,
     "--t4-broadcast-team-deep": deep,
     "--t4-broadcast-highlight": highlight,
     "--t4-broadcast-accent": accent,
-    "--t4-broadcast-text": ink,
-    "--t4-broadcast-text-solid": ink,
-    "--t4-broadcast-text-depth": mixHex(ink, plate, 0.35),
+    "--t4-broadcast-vivid": vivid,
+    "--t4-broadcast-text": "#ffffff",
+    "--t4-broadcast-text-solid": "#ffffff",
+    "--t4-broadcast-text-depth": textDepth,
   };
 }
 
