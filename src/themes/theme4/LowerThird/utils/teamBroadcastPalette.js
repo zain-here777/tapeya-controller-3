@@ -40,6 +40,12 @@ export function actionPlateBroadcastPalette(plateHex, _inkHex = "#0f2744") {
   const vivid = mixHex(plate, "#ffffff", 0.14);
   const highlight = mixHex(plate, "#ffffff", 0.38);
   const textDepth = mixHex(plate, "#000000", 0.72);
+  const diagonalDark = mixHex(plate, "#000000", 0.58);
+  const diagonalLight = mixHex(plate, "#ffffff", 0.2);
+  const diagonalDarkAlt = mixHex(plate, "#000000", 0.38);
+  const diagonalLightAlt = plate;
+  const diagonalDarkDeep = mixHex(plate, "#000000", 0.72);
+  const diagonalLightDeep = mixHex(plate, "#ffffff", 0.32);
 
   return {
     "--t4-broadcast-team-a": base,
@@ -49,6 +55,12 @@ export function actionPlateBroadcastPalette(plateHex, _inkHex = "#0f2744") {
     "--t4-broadcast-highlight": highlight,
     "--t4-broadcast-accent": accent,
     "--t4-broadcast-vivid": vivid,
+    "--t4-broadcast-diagonal-a": diagonalDark,
+    "--t4-broadcast-diagonal-b": diagonalLight,
+    "--t4-broadcast-diagonal-a-alt": diagonalDarkAlt,
+    "--t4-broadcast-diagonal-b-alt": diagonalLightAlt,
+    "--t4-broadcast-diagonal-a-deep": diagonalDarkDeep,
+    "--t4-broadcast-diagonal-b-deep": diagonalLightDeep,
     "--t4-broadcast-text": "#ffffff",
     "--t4-broadcast-text-solid": "#ffffff",
     "--t4-broadcast-text-depth": textDepth,
