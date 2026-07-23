@@ -109,11 +109,132 @@
 [data-theme="theme4"] .t4-fst-stinger-plate {
   position: absolute;
   inset: 0;
-  background: var(--t4-fst-stinger-plate);
+  overflow: hidden;
   transform: translate3d(100%, 0, 0);
   will-change: transform;
   animation: t4-fst-stinger-plate-wipe var(--t4-fst-stinger-loop)
     var(--t4-fst-stinger-ease-plate) infinite;
+}
+
+[data-theme="theme4"] .t4-fst-stinger-plate-base {
+  position: absolute;
+  inset: 0;
+  background: var(--t4-broadcast-team-deep, #050a28);
+}
+
+[data-theme="theme4"] .t4-fst-stinger-plate-shift {
+  position: absolute;
+  inset: -10%;
+  background: linear-gradient(
+    115deg,
+    var(--t4-broadcast-team-deep, #030712) 0%,
+    var(--t4-broadcast-team-a, #070e35) 20%,
+    var(--t4-broadcast-accent, var(--t4-fst-accent)) 45%,
+    var(--t4-broadcast-vivid, var(--t4-fst-accent)) 52%,
+    var(--t4-broadcast-accent, var(--t4-fst-accent)) 58%,
+    var(--t4-broadcast-team-mid, #070e35) 80%,
+    var(--t4-broadcast-team-deep, #030712) 100%
+  );
+  background-size: 240% 240%;
+  opacity: 0.92;
+  animation: t4-fst-plate-gradient-shift var(--t4-fst-stinger-loop) ease-in-out
+    infinite;
+  will-change: background-position;
+}
+
+@keyframes t4-fst-plate-gradient-shift {
+  0%,
+  6% {
+    background-position: 0% 50%;
+  }
+  18%,
+  28% {
+    background-position: 100% 50%;
+  }
+  34%,
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes t4-fst-diagonal-slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
+
+@keyframes t4-fst-plate-shimmer-pass {
+  0%,
+  6% {
+    opacity: 0;
+    transform: translate3d(-85%, 0, 0) skewX(-12deg);
+  }
+  10% {
+    opacity: 0.55;
+  }
+  22% {
+    opacity: 0;
+    transform: translate3d(85%, 0, 0) skewX(-12deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(85%, 0, 0) skewX(-12deg);
+  }
+}
+
+[data-theme="theme4"] .t4-fst-stinger-diagonal {
+  animation: t4-fst-diagonal-slide 2.1s ease-in-out infinite alternate;
+  background-image: linear-gradient(
+    -60deg,
+    var(--t4-broadcast-diagonal-a, #000000) 50%,
+    var(--t4-broadcast-diagonal-b, #ffffff) 50%
+  );
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -50%;
+  right: -50%;
+  opacity: 0.52;
+  will-change: transform;
+}
+
+[data-theme="theme4"] .t4-fst-stinger-diagonal--2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 2.8s;
+  background-image: linear-gradient(
+    -60deg,
+    var(--t4-broadcast-diagonal-a-alt, #000000) 50%,
+    var(--t4-broadcast-diagonal-b-alt, #ffffff) 50%
+  );
+  opacity: 0.44;
+}
+
+[data-theme="theme4"] .t4-fst-stinger-diagonal--3 {
+  animation-duration: 3.5s;
+  background-image: linear-gradient(
+    -60deg,
+    var(--t4-broadcast-diagonal-a-deep, #000000) 50%,
+    var(--t4-broadcast-diagonal-b-deep, #ffffff) 50%
+  );
+  opacity: 0.36;
+}
+
+[data-theme="theme4"] .t4-fst-stinger-plate-shimmer {
+  position: absolute;
+  inset: -20% -40%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, #ffffff 42%, var(--t4-broadcast-vivid, var(--t4-fst-accent))),
+    color-mix(in srgb, var(--t4-broadcast-highlight, #fff) 65%, transparent),
+    transparent
+  );
+  pointer-events: none;
+  animation: t4-fst-plate-shimmer-pass var(--t4-fst-stinger-loop) linear infinite;
+  will-change: transform, opacity;
 }
 
 [data-theme="theme4"] .t4-fst-stinger-morph {
@@ -285,6 +406,12 @@
     animation: none;
     transform: none;
     opacity: 0;
+  }
+
+  [data-theme="theme4"] .t4-fst-stinger-plate-shift,
+  [data-theme="theme4"] .t4-fst-stinger-diagonal,
+  [data-theme="theme4"] .t4-fst-stinger-plate-shimmer {
+    display: none;
   }
 
   [data-theme="theme4"] .t4-fst-stinger-morph {

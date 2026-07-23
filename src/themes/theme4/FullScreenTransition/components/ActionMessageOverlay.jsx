@@ -1,5 +1,6 @@
 import React from "react";
 import ActionStingerOverlay from "./ActionStingerOverlay.jsx";
+import { actionPlateBroadcastPalette } from "../../LowerThird/utils/teamBroadcastPalette.js";
 
 /**
  * Full-screen action overlay — wipe stinger → dock badge (Theme 4).
@@ -17,11 +18,16 @@ export default function ActionMessageOverlay({
   if (!label) return null;
 
   const safeVariant = variant || "four";
+  const motionVars = actionPlateBroadcastPalette(accent);
 
   return (
     <div
       className={`t4-fst-action t4-fst-action--stinger t4-fst-action--${safeVariant}`}
-      style={{ "--t4-fst-accent": accent, "--t4-fst-stinger-plate": accent }}
+      style={{
+        "--t4-fst-accent": accent,
+        "--t4-fst-stinger-plate": accent,
+        ...motionVars,
+      }}
       aria-live="polite"
     >
       <ActionStingerOverlay label={label} variant={safeVariant} />

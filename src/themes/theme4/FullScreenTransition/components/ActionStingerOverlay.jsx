@@ -28,7 +28,14 @@ export default function ActionStingerOverlay({ label = "FOUR", variant = "four" 
       aria-live="polite"
     >
       <div className="t4-fst-stinger-plate-clip" aria-hidden="true">
-        <div className="t4-fst-stinger-plate" />
+        <div className="t4-fst-stinger-plate">
+          <div className="t4-fst-stinger-plate-base motion-reduce:hidden" />
+          <div className="t4-fst-stinger-plate-shift motion-reduce:hidden" />
+          <div className="t4-fst-stinger-diagonal motion-reduce:hidden" />
+          <div className="t4-fst-stinger-diagonal t4-fst-stinger-diagonal--2 motion-reduce:hidden" />
+          <div className="t4-fst-stinger-diagonal t4-fst-stinger-diagonal--3 motion-reduce:hidden" />
+          <div className="t4-fst-stinger-plate-shimmer motion-reduce:hidden" />
+        </div>
       </div>
       <div className="t4-fst-stinger-morph">
         <span className="t4-fst-stinger-morph-text">{text}</span>
