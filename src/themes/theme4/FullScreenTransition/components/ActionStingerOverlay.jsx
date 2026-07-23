@@ -35,6 +35,8 @@ export default function ActionStingerOverlay({ label = "FOUR", variant = "four" 
           <div className="t4-fst-stinger-diagonal t4-fst-stinger-diagonal--2 motion-reduce:hidden" />
           <div className="t4-fst-stinger-diagonal t4-fst-stinger-diagonal--3 motion-reduce:hidden" />
           <div className="t4-fst-stinger-plate-shimmer motion-reduce:hidden" />
+          <div className="t4-fst-stinger-plate-shimmer t4-fst-stinger-plate-shimmer--b motion-reduce:hidden" />
+          <div className="t4-fst-stinger-plate-energy motion-reduce:hidden" />
         </div>
       </div>
       <div className="t4-fst-stinger-morph">
