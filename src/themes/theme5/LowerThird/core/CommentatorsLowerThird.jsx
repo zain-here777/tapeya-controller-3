@@ -1,0 +1,14 @@
+import React from "react";
+import CompactLabelLowerThird from "./CompactLabelLowerThird.jsx";
+
+/**
+ * Theme 5 Commentators lower third — same shell as Umpires; label text only.
+ *
+ * @param {Object} props
+ * @param {Object} props.match
+ * @param {Object} props.baseConfig
+ * @param {Object} [props.config]
+ */
+export default function CommentatorsLowerThird(props) {
+  return <CompactLabelLowerThird {...props} fallbackLabel="Commentators" />;
+}

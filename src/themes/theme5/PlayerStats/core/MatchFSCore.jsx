@@ -1,0 +1,147 @@
+import React from "react";
+import { mergeConfig } from "../../../../shared/utils/mergeConfig.js";
+import BreakBackground from "../../Breaks/components/BreakBackground.jsx";
+import { resolvePlayerStatsTeamColor } from "../utils/resolvePlayerStatsTeamColor.js";
+
+const LOGO_TILE =
+  "flex h-[calc(120px*var(--t5-scale))] w-[calc(120px*var(--t5-scale))] shrink-0 items-center justify-center overflow-hidden rounded-[calc(6px*var(--t5-scale))] bg-[linear-gradient(165deg,#ffffff_0%,#ffffff_58%,#f4f8fd_82%,#e3eef9_100%)] shadow-[0_calc(8px*var(--t5-scale))_calc(24px*var(--t5-scale))_rgba(0,0,0,0.3),inset_0_0_0_1px_rgba(255,255,255,0.15)]";
+
+/**
+ * MatchFS — full-screen match / tournament stats graphic.
+ * Portrait | vertical stats | logo + identity card (team colors throughout).
+ *
+ * @param {"batsman"|"bowler"} [props.variant]
+ */
+export default function MatchFSCore({
+  match,
+  baseConfig,
+  config: configOverride = {},
+  variant = "batsman",
+}) {
+  const player = match?.player;
+  if (!player?.lastName && !player?.name) return null;
+
+  const config = mergeConfig(baseConfig, configOverride);
+  const team = match.team ?? {};
+  const teamColor = resolvePlayerStatsTeamColor(match, variant, config);
+
+  const firstName = player.firstName ?? "";
+  const derivedLast = String(player.name || "")
+    .trim()
+    .split(/\s+/)
+    .slice(1)
+    .join(" ");
+  const lastName =
+    player.lastName || derivedLast || String(player.name || "").trim();
+  const role = player.role ?? "";
+  const subtitle = player.subtitle ?? "";
+  const photoUrl = player.photoUrl ?? "";
+  const stats = player.stats ?? [];
+  const teamCode = team.code ?? "";
+  const teamLabel = team.name || team.code || "Team";
+
+  return (
+    <div
+      className={`absolute inset-0 overflow-hidden select-none font-montserrat ${
+        variant === "bowler" ? "bg-[#071018]" : "bg-[var(--t5-surface)]"
+      } text-[var(--t5-text)]`}
+    >
+      <BreakBackground />
+
+      <div className="relative z-[1] flex h-full w-full items-center justify-center gap-[calc(16px*var(--t5-scale))] box-border px-[calc(48px*var(--t5-scale))] py-[calc(40px*var(--t5-scale))] motion-safe:animate-soft-in motion-reduce:animate-none">
+        <div className="relative flex h-full min-h-0 w-[min(42%,calc(620px*var(--t5-scale)))] shrink-0 items-center justify-center overflow-hidden">
+          {photoUrl ? (
+            <img
+              src={photoUrl}
+              alt={`${firstName} ${lastName}`.trim() || lastName}
+              className="h-full max-h-full w-full object-contain object-center drop-shadow-[0_calc(12px*var(--t5-scale))_calc(28px*var(--t5-scale))_rgba(0,0,0,0.45)]"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center">
+              <span className="text-[calc(80px*var(--t5-scale))] font-extrabold uppercase leading-[0.95] tracking-[calc(1.5px*var(--t5-scale))] text-white/40">
+                {(lastName || "?").slice(0, 1)}
+              </span>
+            </div>
+          )}
+        </div>
+
+        {stats.length ? (
+          <div className="flex h-full max-h-[calc(720px*var(--t5-scale))] w-[calc(168px*var(--t5-scale))] shrink-0 flex-col items-stretch justify-stretch gap-[calc(8px*var(--t5-scale))]">
+            {stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className="flex min-h-0 flex-[1_1_0%] flex-col items-center justify-center gap-[calc(6px*var(--t5-scale))] rounded-[calc(6px*var(--t5-scale))] border border-[var(--t5-divider)] px-[calc(12px*var(--t5-scale))] py-[calc(8px*var(--t5-scale))] leading-none motion-safe:animate-soft-in motion-reduce:animate-none"
+                style={{
+                  backgroundColor: teamColor,
+                  animationDelay: `${120 + index * 60}ms`,
+                }}
+              >
+                <span className="whitespace-nowrap text-[calc(18px*var(--t5-scale))] font-bold uppercase leading-none tracking-[calc(1px*var(--t5-scale))] text-[#f8fafc]">
+                  {stat.label}
+                </span>
+                <span className="text-[calc(36px*var(--t5-scale))] font-extrabold tabular-nums leading-none text-[#f8fafc]">
+                  {stat.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        ) : null}
+
+        <div className="flex w-[min(40%,calc(480px*var(--t5-scale)))] min-w-0 shrink-0 flex-col items-start justify-center gap-[calc(28px*var(--t5-scale))]">
+          <div className={LOGO_TILE}>
+            {team.logoUrl ? (
+              <img
+                src={team.logoUrl}
+                alt={teamLabel}
+                className="h-full w-full object-contain p-[calc(14px*var(--t5-scale))]"
+              />
+            ) : (
+              <span className="text-[calc(28px*var(--t5-scale))] font-bold uppercase text-[#0f2847]">
+                {teamCode || "?"}
+              </span>
+            )}
+          </div>
+
+          <div
+            className="flex w-full flex-col gap-[calc(20px*var(--t5-scale))] overflow-hidden rounded-[calc(8px*var(--t5-scale))] border border-[var(--t5-divider)] px-[calc(32px*var(--t5-scale))] py-[calc(28px*var(--t5-scale))]"
+            style={{ backgroundColor: teamColor }}
+          >
+            <div className="flex flex-col gap-[calc(8px*var(--t5-scale))] leading-none">
+              {firstName ? (
+                <span className="text-[calc(34px*var(--t5-scale))] font-semibold uppercase leading-[1.05] tracking-[calc(2px*var(--t5-scale))] text-[#f8fafc]">
+                  {firstName}
+                </span>
+              ) : null}
+              <span className="text-[calc(80px*var(--t5-scale))] font-extrabold uppercase leading-[0.95] tracking-[calc(1.5px*var(--t5-scale))] text-[#f8fafc]">
+                {lastName}
+              </span>
+            </div>
+
+            <div
+              className="h-px w-full shrink-0 bg-[var(--t5-divider)]"
+              aria-hidden="true"
+            />
+
+            <div className="flex flex-col gap-[calc(10px*var(--t5-scale))]">
+              {teamCode ? (
+                <span className="text-[calc(22px*var(--t5-scale))] font-bold uppercase leading-[1.1] tracking-[calc(2px*var(--t5-scale))] text-[#7dd3fc]">
+                  {teamCode}
+                </span>
+              ) : null}
+              {role ? (
+                <span className="text-[calc(30px*var(--t5-scale))] font-bold uppercase leading-[1.15] tracking-[calc(1.2px*var(--t5-scale))] text-[#f8fafc]">
+                  {role}
+                </span>
+              ) : null}
+              {subtitle ? (
+                <span className="text-[calc(22px*var(--t5-scale))] font-medium leading-[1.2] tracking-[calc(0.4px*var(--t5-scale))] text-[#f8fafc]/[0.72]">
+                  {subtitle}
+                </span>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

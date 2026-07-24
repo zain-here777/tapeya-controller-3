@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { getController } from "./registry.js";
 
 /**
- * Theme 4 controller host — isolated from theme 3 ControllerHost.
+ * Theme 4 controller host — isolated from other themes.
+ * Controllers are React.lazy() boundaries so only the active graphic loads.
  */
 export default function ControllerHost({ category, id, ...props }) {
   const Controller = getController(category, id);
@@ -14,10 +15,16 @@ export default function ControllerHost({ category, id, ...props }) {
     return null;
   }
 
+  const graphic = (
+    <Suspense fallback={null}>
+      <Controller {...props} />
+    </Suspense>
+  );
+
   if (category === "lower-third" || category === "tour-hit") {
     return (
       <LowerThirdEnter animKey={`${category}/${id}`}>
-        <Controller {...props} />
+        {graphic}
       </LowerThirdEnter>
     );
   }
@@ -25,7 +32,7 @@ export default function ControllerHost({ category, id, ...props }) {
   if (category === "full-screen-transition" || category === "breaks") {
     return (
       <FullScreenTransitionEnter animKey={`${category}/${id}`}>
-        <Controller {...props} />
+        {graphic}
       </FullScreenTransitionEnter>
     );
   }
@@ -34,13 +41,13 @@ export default function ControllerHost({ category, id, ...props }) {
     if (id === "top-batter" || id === "top-bowler") {
       return (
         <TournamentEnter animKey={`${category}/${id}`}>
-          <Controller {...props} />
+          {graphic}
         </TournamentEnter>
       );
     }
     return (
       <FullScreenTransitionEnter animKey={`${category}/${id}`}>
-        <Controller {...props} />
+        {graphic}
       </FullScreenTransitionEnter>
     );
   }
@@ -48,7 +55,7 @@ export default function ControllerHost({ category, id, ...props }) {
   if (category === "tournaments") {
     return (
       <TournamentEnter animKey={`${category}/${id}`}>
-        <Controller {...props} />
+        {graphic}
       </TournamentEnter>
     );
   }
@@ -56,7 +63,7 @@ export default function ControllerHost({ category, id, ...props }) {
   if (category === "charts") {
     return (
       <ChartEnter animKey={`${category}/${id}`}>
-        <Controller {...props} />
+        {graphic}
       </ChartEnter>
     );
   }
@@ -65,18 +72,18 @@ export default function ControllerHost({ category, id, ...props }) {
     if (String(id).endsWith("-lt")) {
       return (
         <LowerThirdEnter animKey={`${category}/${id}`}>
-          <Controller {...props} />
+          {graphic}
         </LowerThirdEnter>
       );
     }
     return (
       <FullScreenTransitionEnter animKey={`${category}/${id}`}>
-        <Controller {...props} />
+        {graphic}
       </FullScreenTransitionEnter>
     );
   }
 
-  return <Controller {...props} />;
+  return graphic;
 }
 
 function LowerThirdEnter({ animKey, children }) {

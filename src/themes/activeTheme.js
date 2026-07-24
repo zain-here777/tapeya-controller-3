@@ -14,7 +14,10 @@ export function readActiveTheme() {
 
 /** @param {string} themeId */
 export function writeActiveTheme(themeId) {
-  return themeStore.write(resolveThemeId(themeId));
+  const resolved = resolveThemeId(themeId);
+  // Skip no-op writes so tabs do not fight each other with redundant events.
+  if (themeStore.read() === resolved) return resolved;
+  return themeStore.write(resolved);
 }
 
 /** @param {(themeId: string) => void} onChange */

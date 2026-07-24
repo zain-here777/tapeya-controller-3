@@ -1,96 +1,5 @@
-import AtStage from "./lower-third/AT_STAGE.jsx";
-import Commentators from "./lower-third/COMMENTATORS.jsx";
-import CurrentPartnership from "./lower-third/CURRENT_PARTNERSHIP.jsx";
-import DecisionPending from "./lower-third/DECISION_PENDING.jsx";
-import Default from "./lower-third/DEFAULT.jsx";
-import DownloadTapeya from "./lower-third/DOWNLOAD_TAPEYA.jsx";
-import Empty from "./lower-third/EMPTY.jsx";
-import FOW from "./lower-third/FOW.jsx";
-import FiftyUp from "./lower-third/50_UP.jsx";
-import FollowTapeya from "./lower-third/FOLLOW_TAPEYA.jsx";
-import Four from "./lower-third/FOUR.jsx";
-import HundredUp from "./lower-third/100_UP.jsx";
-import IntroLT from "./lower-third/INTRO_LT.jsx";
-import Last12Balls from "./lower-third/LAST_12_BALLS.jsx";
-import Last30Balls from "./lower-third/LAST_30_BALLS.jsx";
-import LastWicket from "./lower-third/LAST_WICKET.jsx";
-import MatchScorecard from "./lower-third/MATCH_SCORECARD.jsx";
-import MatchScorecardB from "./lower-third/MATCH_SCORECARD_B.jsx";
-import MatchSummary from "./lower-third/MATCH_SUMMARY.jsx";
-import MiniScorecard from "./lower-third/MINI_SCORECARD.jsx";
-import NeedTarget from "./lower-third/NEED_TARGET.jsx";
-import NoBall from "./lower-third/NO_BALL.jsx";
-import NotOut from "./lower-third/NOT_OUT.jsx";
-import Out from "./lower-third/OUT.jsx";
-import PreviousOver from "./lower-third/PREVIOUS_OVER.jsx";
-import Replay from "./lower-third/REPLAY.jsx";
-import ResultLT from "./lower-third/RESULT_LT.jsx";
-import RunRate from "./lower-third/RUN_RATE.jsx";
-import Scorers from "./lower-third/SCORERS.jsx";
-import Six from "./lower-third/SIX.jsx";
-import ThisOver from "./lower-third/THIS_OVER.jsx";
-import TossLT from "./lower-third/TOSS_LT.jsx";
-import TournamentName from "./lower-third/TOURNAMENT_NAME.jsx";
-import Umpires from "./lower-third/UMPIRES.jsx";
-import Wide from "./lower-third/WIDE.jsx";
-import WinPrediction from "./lower-third/WIN_PREDICTION.jsx";
-import TourHitFour from "./tour-hit/FOUR.jsx";
-import TourHitFifties from "./tour-hit/FIFTIES.jsx";
-import TourHitHundreds from "./tour-hit/HUNDREDS.jsx";
-import TourHitRuns from "./tour-hit/RUNS.jsx";
-import TourHitSixes from "./tour-hit/SIXES.jsx";
-import TourHitWickets from "./tour-hit/WICKETS.jsx";
-import FstDecisionPending from "./full-screen-transition/DECISION_PENDING.jsx";
-import FstFifty from "./full-screen-transition/FIFTY.jsx";
-import FstFour from "./full-screen-transition/FOUR.jsx";
-import FstHundred from "./full-screen-transition/HUNDRED.jsx";
-import FstNoBall from "./full-screen-transition/NO_BALL.jsx";
-import FstNotOut from "./full-screen-transition/NOT_OUT.jsx";
-import FstOut from "./full-screen-transition/OUT.jsx";
-import FstReplay from "./full-screen-transition/REPLAY.jsx";
-import FstSix from "./full-screen-transition/SIX.jsx";
-import FstWide from "./full-screen-transition/WIDE.jsx";
-import NameLT from "./player-stats/batsman/NAME_LT.jsx";
-import MatchLT from "./player-stats/batsman/MATCH_LT.jsx";
-import TournamentLT from "./player-stats/batsman/TOURNAMENT_LT.jsx";
-import NameFS from "./player-stats/batsman/NAME_FS.jsx";
-import MatchFS from "./player-stats/batsman/MATCH_FS.jsx";
-import TournamentFS from "./player-stats/batsman/TOURNAMENT_FS.jsx";
-import BowlerNameLT from "./player-stats/bowler/BOWLER_NAME_LT.jsx";
-import BowlerMatchLT from "./player-stats/bowler/BOWLER_MATCH_LT.jsx";
-import BowlerTournamentLT from "./player-stats/bowler/BOWLER_TOURNAMENT_LT.jsx";
-import BowlerNameFS from "./player-stats/bowler/BOWLER_NAME_FS.jsx";
-import BowlerMatchFS from "./player-stats/bowler/BOWLER_MATCH_FS.jsx";
-import BowlerTournamentFS from "./player-stats/bowler/BOWLER_TOURNAMENT_FS.jsx";
-import HighestRuns from "./tournaments/HIGHEST_RUNS.jsx";
-import HighestWickets from "./tournaments/HIGHEST_WICKETS.jsx";
-import HighestSixes from "./tournaments/HIGHEST_SIXES.jsx";
-import HighestFours from "./tournaments/HIGHEST_FOURS.jsx";
-import PointsTable from "./tournaments/POINTS_TABLE.jsx";
-import ThisMatch from "./full-screen/THIS_MATCH.jsx";
-import NextMatch from "./full-screen/NEXT_MATCH.jsx";
-import Playing11 from "./full-screen/PLAYING_11.jsx";
-import LastWicketFs from "./full-screen/LAST_WICKET.jsx";
-import BattingSquad from "./full-screen/BATTING_SQUAD.jsx";
-import BowlingSquad from "./full-screen/BOWLING_SQUAD.jsx";
-import CurrentPartnershipFs from "./full-screen/CURRENT_PARTNERSHIP.jsx";
-import PartnershipList from "./full-screen/PARTNERSHIP_LIST.jsx";
-import NeedTargetFs from "./full-screen/NEED_TARGET.jsx";
-import InningsFigure from "./full-screen/INNINGS_FIGURE.jsx";
-import BattingSummary from "./full-screen/BATTING_SUMMARY.jsx";
-import BowlingSummary from "./full-screen/BOWLING_SUMMARY.jsx";
-import MatchSummaryFs from "./full-screen/MATCH_SUMMARY.jsx";
-import TopBatter from "./full-screen/TOP_BATTER.jsx";
-import TopBowler from "./full-screen/TOP_BOWLER.jsx";
-import Worm from "./charts/WORM.jsx";
-import Manhattan from "./charts/MANHATTAN.jsx";
-import RunRateChart from "./charts/RUN_RATE_CHART.jsx";
-import WagonWheel from "./charts/WAGON_WHEEL.jsx";
-import InningsBreak from "./breaks/INNINGS_BREAK.jsx";
-import LunchBreak from "./breaks/LUNCH_BREAK.jsx";
-import RainStopped from "./breaks/RAIN_STOPPED.jsx";
-import StrategicTimeout from "./breaks/STRATEGIC_TIMEOUT.jsx";
-import TeaBreak from "./breaks/TEA_BREAK.jsx";
+import { lazy } from "react";
+
 import atStageSample from "../LowerThird/data/atStage.sample.js";
 import commentatorsSample from "../LowerThird/data/commentators.sample.js";
 import currentPartnershipSample from "../LowerThird/data/currentPartnership.sample.js";
@@ -232,217 +141,217 @@ const LOWER_THIRD_CONTROLLERS = [
   {
     id: "empty",
     label: "Empty",
-    component: Empty,
+    component: lazy(() => import("./lower-third/EMPTY.jsx")),
     getProps: () => ({}),
   },
   {
     id: "default",
     label: "Default",
-    component: Default,
+    component: lazy(() => import("./lower-third/DEFAULT.jsx")),
     getProps: () => ({ match: defaultSampleMatch }),
   },
   {
     id: "mini-scorecard",
     label: "Mini ScoreCard",
-    component: MiniScorecard,
+    component: lazy(() => import("./lower-third/MINI_SCORECARD.jsx")),
     getProps: () => ({ match: miniScorecardSample }),
   },
   {
     id: "match-summary",
     label: "Match Summary",
-    component: MatchSummary,
+    component: lazy(() => import("./lower-third/MATCH_SUMMARY.jsx")),
     getProps: () => ({ match: matchSummarySample }),
   },
   {
     id: "intro-lt",
     label: "Intro LT",
-    component: IntroLT,
+    component: lazy(() => import("./lower-third/INTRO_LT.jsx")),
     getProps: () => ({ match: introLtSample }),
   },
   {
     id: "toss-lt",
     label: "Toss LT",
-    component: TossLT,
+    component: lazy(() => import("./lower-third/TOSS_LT.jsx")),
     getProps: () => ({ match: tossLtSample }),
   },
   {
     id: "need-target",
     label: "Need/Target",
-    component: NeedTarget,
+    component: lazy(() => import("./lower-third/NEED_TARGET.jsx")),
     getProps: () => ({ match: needTargetSample }),
   },
   {
     id: "at-stage",
     label: "At Stage",
-    component: AtStage,
+    component: lazy(() => import("./lower-third/AT_STAGE.jsx")),
     getProps: () => ({ match: atStageSample }),
   },
   {
     id: "run-rate",
     label: "Run Rate",
-    component: RunRate,
+    component: lazy(() => import("./lower-third/RUN_RATE.jsx")),
     getProps: () => ({ match: runRateSample }),
   },
   {
     id: "this-over",
     label: "This Over",
-    component: ThisOver,
+    component: lazy(() => import("./lower-third/THIS_OVER.jsx")),
     getProps: () => ({ match: thisOverSample }),
   },
   {
     id: "previous-over",
     label: "Previous Over",
-    component: PreviousOver,
+    component: lazy(() => import("./lower-third/PREVIOUS_OVER.jsx")),
     getProps: () => ({ match: previousOverSample }),
   },
   {
     id: "fow",
     label: "FOW",
-    component: FOW,
+    component: lazy(() => import("./lower-third/FOW.jsx")),
     getProps: () => ({ match: fowSample }),
   },
   {
     id: "last-wicket",
     label: "Last Wicket",
-    component: LastWicket,
+    component: lazy(() => import("./lower-third/LAST_WICKET.jsx")),
     getProps: () => ({ match: lastWicketSample }),
   },
   {
     id: "last-12-balls",
     label: "Last 12 Balls",
-    component: Last12Balls,
+    component: lazy(() => import("./lower-third/LAST_12_BALLS.jsx")),
     getProps: () => ({ match: last12BallsSample }),
   },
   {
     id: "last-30-balls",
     label: "Last 30 Balls",
-    component: Last30Balls,
+    component: lazy(() => import("./lower-third/LAST_30_BALLS.jsx")),
     getProps: () => ({ match: last30BallsSample }),
   },
   {
     id: "current-partnership",
     label: "Current Partnership",
-    component: CurrentPartnership,
+    component: lazy(() => import("./lower-third/CURRENT_PARTNERSHIP.jsx")),
     getProps: () => ({ match: currentPartnershipSample }),
   },
   {
     id: "tournament-name",
     label: "Tournament Name",
-    component: TournamentName,
+    component: lazy(() => import("./lower-third/TOURNAMENT_NAME.jsx")),
     getProps: () => ({ match: tournamentNameSample }),
   },
   {
     id: "result-lt",
     label: "Result LT",
-    component: ResultLT,
+    component: lazy(() => import("./lower-third/RESULT_LT.jsx")),
     getProps: () => ({ match: resultLtSample }),
   },
   {
     id: "win-prediction",
     label: "Win Prediction",
-    component: WinPrediction,
+    component: lazy(() => import("./lower-third/WIN_PREDICTION.jsx")),
     getProps: () => ({ match: winPredictionSample }),
   },
   {
     id: "four",
     label: "4",
-    component: Four,
+    component: lazy(() => import("./lower-third/FOUR.jsx")),
     getProps: () => ({ match: fourSample }),
   },
   {
     id: "six",
     label: "6",
-    component: Six,
+    component: lazy(() => import("./lower-third/SIX.jsx")),
     getProps: () => ({ match: sixSample }),
   },
   {
     id: "wide",
     label: "Wide",
-    component: Wide,
+    component: lazy(() => import("./lower-third/WIDE.jsx")),
     getProps: () => ({ match: wideSample }),
   },
   {
     id: "no-ball",
     label: "No-Ball",
-    component: NoBall,
+    component: lazy(() => import("./lower-third/NO_BALL.jsx")),
     getProps: () => ({ match: noBallSample }),
   },
   {
     id: "not-out",
     label: "Not Out",
-    component: NotOut,
+    component: lazy(() => import("./lower-third/NOT_OUT.jsx")),
     getProps: () => ({ match: notOutSample }),
   },
   {
     id: "out",
     label: "Out",
-    component: Out,
+    component: lazy(() => import("./lower-third/OUT.jsx")),
     getProps: () => ({ match: outSample }),
   },
   {
     id: "50-up",
     label: "50 Up",
-    component: FiftyUp,
+    component: lazy(() => import("./lower-third/50_UP.jsx")),
     getProps: () => ({ match: fiftyUpSample }),
   },
   {
     id: "100-up",
     label: "100 Up",
-    component: HundredUp,
+    component: lazy(() => import("./lower-third/100_UP.jsx")),
     getProps: () => ({ match: hundredUpSample }),
   },
   {
     id: "replay",
     label: "Replay",
-    component: Replay,
+    component: lazy(() => import("./lower-third/REPLAY.jsx")),
     getProps: () => ({ match: replaySample }),
   },
   {
     id: "decision-pending",
     label: "Decision Pending",
-    component: DecisionPending,
+    component: lazy(() => import("./lower-third/DECISION_PENDING.jsx")),
     getProps: () => ({ match: decisionPendingSample }),
   },
   {
     id: "umpires",
     label: "Umpires",
-    component: Umpires,
+    component: lazy(() => import("./lower-third/UMPIRES.jsx")),
     getProps: () => ({ match: umpiresSample }),
   },
   {
     id: "scorers",
     label: "Scorers",
-    component: Scorers,
+    component: lazy(() => import("./lower-third/SCORERS.jsx")),
     getProps: () => ({ match: scorersSample }),
   },
   {
     id: "commentators",
     label: "Commentators",
-    component: Commentators,
+    component: lazy(() => import("./lower-third/COMMENTATORS.jsx")),
     getProps: () => ({ match: commentatorsSample }),
   },
   {
     id: "follow-tapeya",
     label: "Follow Tapeya",
-    component: FollowTapeya,
+    component: lazy(() => import("./lower-third/FOLLOW_TAPEYA.jsx")),
     getProps: () => ({ match: followTapeyaSample }),
   },
   {
     id: "download-tapeya",
     label: "Download Tapeya",
-    component: DownloadTapeya,
+    component: lazy(() => import("./lower-third/DOWNLOAD_TAPEYA.jsx")),
     getProps: () => ({ match: downloadTapeyaSample }),
   },
   {
     id: "match-scorecard",
     label: "Match Scorecard",
-    component: MatchScorecard,
+    component: lazy(() => import("./lower-third/MATCH_SCORECARD.jsx")),
     getProps: () => ({ match: sampleMatch }),
   },
   {
     id: "match-scorecard-b",
     label: "Match Scorecard B",
-    component: MatchScorecardB,
+    component: lazy(() => import("./lower-third/MATCH_SCORECARD_B.jsx")),
     getProps: () => ({ match: sampleMatchB }),
   },
 ];
@@ -455,37 +364,37 @@ const TOUR_HIT_CONTROLLERS = [
   {
     id: "four",
     label: "4's",
-    component: TourHitFour,
+    component: lazy(() => import("./tour-hit/FOUR.jsx")),
     getProps: () => ({ match: tourHitFourSample }),
   },
   {
     id: "sixes",
     label: "6's",
-    component: TourHitSixes,
+    component: lazy(() => import("./tour-hit/SIXES.jsx")),
     getProps: () => ({ match: tourHitSixesSample }),
   },
   {
     id: "fifties",
     label: "50's",
-    component: TourHitFifties,
+    component: lazy(() => import("./tour-hit/FIFTIES.jsx")),
     getProps: () => ({ match: tourHitFiftiesSample }),
   },
   {
     id: "hundreds",
     label: "100's",
-    component: TourHitHundreds,
+    component: lazy(() => import("./tour-hit/HUNDREDS.jsx")),
     getProps: () => ({ match: tourHitHundredsSample }),
   },
   {
     id: "runs",
     label: "Run's",
-    component: TourHitRuns,
+    component: lazy(() => import("./tour-hit/RUNS.jsx")),
     getProps: () => ({ match: tourHitRunsSample }),
   },
   {
     id: "wickets",
     label: "Wkt's",
-    component: TourHitWickets,
+    component: lazy(() => import("./tour-hit/WICKETS.jsx")),
     getProps: () => ({ match: tourHitWicketsSample }),
   },
 ];
@@ -498,31 +407,31 @@ const BREAK_CONTROLLERS = [
   {
     id: "innings-break",
     label: "Innings Break",
-    component: InningsBreak,
+    component: lazy(() => import("./breaks/INNINGS_BREAK.jsx")),
     getProps: () => ({ match: inningsBreakSample }),
   },
   {
     id: "tea-break",
     label: "Tea Break",
-    component: TeaBreak,
+    component: lazy(() => import("./breaks/TEA_BREAK.jsx")),
     getProps: () => ({ match: teaBreakSample }),
   },
   {
     id: "lunch-break",
     label: "Lunch Break",
-    component: LunchBreak,
+    component: lazy(() => import("./breaks/LUNCH_BREAK.jsx")),
     getProps: () => ({ match: lunchBreakSample }),
   },
   {
     id: "rain-stopped",
     label: "Rain Stopped",
-    component: RainStopped,
+    component: lazy(() => import("./breaks/RAIN_STOPPED.jsx")),
     getProps: () => ({ match: rainStoppedSample }),
   },
   {
     id: "strategic-timeout",
     label: "Strategic Timeout",
-    component: StrategicTimeout,
+    component: lazy(() => import("./breaks/STRATEGIC_TIMEOUT.jsx")),
     getProps: () => ({ match: strategicTimeoutSample }),
   },
 ];
@@ -535,61 +444,61 @@ const FULL_SCREEN_TRANSITION_CONTROLLERS = [
   {
     id: "four",
     label: "Four",
-    component: FstFour,
+    component: lazy(() => import("./full-screen-transition/FOUR.jsx")),
     getProps: () => ({ match: fstFourSample }),
   },
   {
     id: "six",
     label: "Six",
-    component: FstSix,
+    component: lazy(() => import("./full-screen-transition/SIX.jsx")),
     getProps: () => ({ match: fstSixSample }),
   },
   {
     id: "not-out",
     label: "Not Out",
-    component: FstNotOut,
+    component: lazy(() => import("./full-screen-transition/NOT_OUT.jsx")),
     getProps: () => ({ match: fstNotOutSample }),
   },
   {
     id: "out",
     label: "Out",
-    component: FstOut,
+    component: lazy(() => import("./full-screen-transition/OUT.jsx")),
     getProps: () => ({ match: fstOutSample }),
   },
   {
     id: "no-ball",
     label: "No-Ball",
-    component: FstNoBall,
+    component: lazy(() => import("./full-screen-transition/NO_BALL.jsx")),
     getProps: () => ({ match: fstNoBallSample }),
   },
   {
     id: "wide",
     label: "Wide",
-    component: FstWide,
+    component: lazy(() => import("./full-screen-transition/WIDE.jsx")),
     getProps: () => ({ match: fstWideSample }),
   },
   {
     id: "fifty",
     label: "50",
-    component: FstFifty,
+    component: lazy(() => import("./full-screen-transition/FIFTY.jsx")),
     getProps: () => ({ match: fstFiftySample }),
   },
   {
     id: "hundred",
     label: "100",
-    component: FstHundred,
+    component: lazy(() => import("./full-screen-transition/HUNDRED.jsx")),
     getProps: () => ({ match: fstHundredSample }),
   },
   {
     id: "replay",
     label: "Replay",
-    component: FstReplay,
+    component: lazy(() => import("./full-screen-transition/REPLAY.jsx")),
     getProps: () => ({ match: fstReplaySample }),
   },
   {
     id: "decision-pending",
     label: "Decision Pending",
-    component: FstDecisionPending,
+    component: lazy(() => import("./full-screen-transition/DECISION_PENDING.jsx")),
     getProps: () => ({ match: fstDecisionPendingSample }),
   },
 ];
@@ -603,84 +512,84 @@ const PLAYER_STATS_CONTROLLERS = [
     id: "name-lt",
     label: "Name LT",
     group: "batsman",
-    component: NameLT,
+    component: lazy(() => import("./player-stats/batsman/NAME_LT.jsx")),
     getProps: () => ({ match: nameLtSample }),
   },
   {
     id: "match-lt",
     label: "Match LT",
     group: "batsman",
-    component: MatchLT,
+    component: lazy(() => import("./player-stats/batsman/MATCH_LT.jsx")),
     getProps: () => ({ match: matchLtSample }),
   },
   {
     id: "tournament-lt",
     label: "Tournament LT",
     group: "batsman",
-    component: TournamentLT,
+    component: lazy(() => import("./player-stats/batsman/TOURNAMENT_LT.jsx")),
     getProps: () => ({ match: tournamentLtSample }),
   },
   {
     id: "name-fs",
     label: "Name FS",
     group: "batsman",
-    component: NameFS,
+    component: lazy(() => import("./player-stats/batsman/NAME_FS.jsx")),
     getProps: () => ({ match: nameFsSample }),
   },
   {
     id: "match-fs",
     label: "Match FS",
     group: "batsman",
-    component: MatchFS,
+    component: lazy(() => import("./player-stats/batsman/MATCH_FS.jsx")),
     getProps: () => ({ match: matchFsSample }),
   },
   {
     id: "tournament-fs",
     label: "Tournament FS",
     group: "batsman",
-    component: TournamentFS,
+    component: lazy(() => import("./player-stats/batsman/TOURNAMENT_FS.jsx")),
     getProps: () => ({ match: tournamentFsSample }),
   },
   {
     id: "bowler-name-lt",
     label: "Name LT",
     group: "bowler",
-    component: BowlerNameLT,
+    component: lazy(() => import("./player-stats/bowler/BOWLER_NAME_LT.jsx")),
     getProps: () => ({ match: bowlerNameLtSample }),
   },
   {
     id: "bowler-match-lt",
     label: "Match LT",
     group: "bowler",
-    component: BowlerMatchLT,
+    component: lazy(() => import("./player-stats/bowler/BOWLER_MATCH_LT.jsx")),
     getProps: () => ({ match: bowlerMatchLtSample }),
   },
   {
     id: "bowler-tournament-lt",
     label: "Tournament LT",
     group: "bowler",
-    component: BowlerTournamentLT,
+    component: lazy(() => import("./player-stats/bowler/BOWLER_TOURNAMENT_LT.jsx")),
     getProps: () => ({ match: bowlerTournamentLtSample }),
   },
   {
     id: "bowler-name-fs",
     label: "Name FS",
     group: "bowler",
-    component: BowlerNameFS,
+    component: lazy(() => import("./player-stats/bowler/BOWLER_NAME_FS.jsx")),
     getProps: () => ({ match: bowlerNameFsSample }),
   },
   {
     id: "bowler-match-fs",
     label: "Match FS",
     group: "bowler",
-    component: BowlerMatchFS,
+    component: lazy(() => import("./player-stats/bowler/BOWLER_MATCH_FS.jsx")),
     getProps: () => ({ match: bowlerMatchFsSample }),
   },
   {
     id: "bowler-tournament-fs",
     label: "Tournament FS",
     group: "bowler",
-    component: BowlerTournamentFS,
+    component: lazy(() => import("./player-stats/bowler/BOWLER_TOURNAMENT_FS.jsx")),
     getProps: () => ({ match: bowlerTournamentFsSample }),
   },
 ];
@@ -692,31 +601,31 @@ const TOURNAMENT_CONTROLLERS = [
   {
     id: "points-table",
     label: "Points Table",
-    component: PointsTable,
+    component: lazy(() => import("./tournaments/POINTS_TABLE.jsx")),
     getProps: () => ({ match: pointsTableSample }),
   },
   {
     id: "highest-runs",
     label: "Highest Runs",
-    component: HighestRuns,
+    component: lazy(() => import("./tournaments/HIGHEST_RUNS.jsx")),
     getProps: () => ({ match: highestRunsSample }),
   },
   {
     id: "highest-wickets",
     label: "Highest Wickets",
-    component: HighestWickets,
+    component: lazy(() => import("./tournaments/HIGHEST_WICKETS.jsx")),
     getProps: () => ({ match: highestWicketsSample }),
   },
   {
     id: "highest-sixes",
     label: "Highest Sixes",
-    component: HighestSixes,
+    component: lazy(() => import("./tournaments/HIGHEST_SIXES.jsx")),
     getProps: () => ({ match: highestSixesSample }),
   },
   {
     id: "highest-fours",
     label: "Highest Fours",
-    component: HighestFours,
+    component: lazy(() => import("./tournaments/HIGHEST_FOURS.jsx")),
     getProps: () => ({ match: highestFoursSample }),
   },
 ];
@@ -728,25 +637,25 @@ const CHARTS_CONTROLLERS = [
   {
     id: "worm",
     label: "Worm",
-    component: Worm,
+    component: lazy(() => import("./charts/WORM.jsx")),
     getProps: () => ({ match: wormSample }),
   },
   {
     id: "manhattan",
     label: "Manhattan",
-    component: Manhattan,
+    component: lazy(() => import("./charts/MANHATTAN.jsx")),
     getProps: () => ({ match: manhattanSample }),
   },
   {
     id: "run-rate-chart",
     label: "Run Rate Chart",
-    component: RunRateChart,
+    component: lazy(() => import("./charts/RUN_RATE_CHART.jsx")),
     getProps: () => ({ match: runRateChartSample }),
   },
   {
     id: "wagon-wheel",
     label: "Wagon Wheel",
-    component: WagonWheel,
+    component: lazy(() => import("./charts/WAGON_WHEEL.jsx")),
     getProps: () => ({ match: wagonWheelSample }),
   },
 ];
@@ -758,91 +667,91 @@ const FULL_SCREEN_CONTROLLERS = [
   {
     id: "this-match",
     label: "This Match",
-    component: ThisMatch,
+    component: lazy(() => import("./full-screen/THIS_MATCH.jsx")),
     getProps: () => ({ match: thisMatchSample }),
   },
   {
     id: "next-match",
     label: "Next Match",
-    component: NextMatch,
+    component: lazy(() => import("./full-screen/NEXT_MATCH.jsx")),
     getProps: () => ({ match: nextMatchSample }),
   },
   {
     id: "playing-11",
     label: "Playing 11",
-    component: Playing11,
+    component: lazy(() => import("./full-screen/PLAYING_11.jsx")),
     getProps: () => ({ match: playing11Sample }),
   },
   {
     id: "last-wicket",
     label: "Last Wicket",
-    component: LastWicketFs,
+    component: lazy(() => import("./full-screen/LAST_WICKET.jsx")),
     getProps: () => ({ match: lastWicketFsSample }),
   },
   {
     id: "batting-squad",
     label: "Batting Squad",
-    component: BattingSquad,
+    component: lazy(() => import("./full-screen/BATTING_SQUAD.jsx")),
     getProps: () => ({ match: battingSquadSample }),
   },
   {
     id: "bowling-squad",
     label: "Bowling Squad",
-    component: BowlingSquad,
+    component: lazy(() => import("./full-screen/BOWLING_SQUAD.jsx")),
     getProps: () => ({ match: bowlingSquadSample }),
   },
   {
     id: "current-partnership",
     label: "Current Partnership",
-    component: CurrentPartnershipFs,
+    component: lazy(() => import("./full-screen/CURRENT_PARTNERSHIP.jsx")),
     getProps: () => ({ match: currentPartnershipFsSample }),
   },
   {
     id: "partnership-list",
     label: "Partnership List",
-    component: PartnershipList,
+    component: lazy(() => import("./full-screen/PARTNERSHIP_LIST.jsx")),
     getProps: () => ({ match: partnershipListSample }),
   },
   {
     id: "need-target",
     label: "Need Target",
-    component: NeedTargetFs,
+    component: lazy(() => import("./full-screen/NEED_TARGET.jsx")),
     getProps: () => ({ match: needTargetFsSample }),
   },
   {
     id: "innings-figure",
     label: "Innings Figure",
-    component: InningsFigure,
+    component: lazy(() => import("./full-screen/INNINGS_FIGURE.jsx")),
     getProps: () => ({ match: inningsFigureSample }),
   },
   {
     id: "batting-summary",
     label: "Batting Summary",
-    component: BattingSummary,
+    component: lazy(() => import("./full-screen/BATTING_SUMMARY.jsx")),
     getProps: () => ({ match: battingSummarySample }),
   },
   {
     id: "bowling-summary",
     label: "Bowling Summary",
-    component: BowlingSummary,
+    component: lazy(() => import("./full-screen/BOWLING_SUMMARY.jsx")),
     getProps: () => ({ match: bowlingSummarySample }),
   },
   {
     id: "match-summary",
     label: "Match Summary",
-    component: MatchSummaryFs,
+    component: lazy(() => import("./full-screen/MATCH_SUMMARY.jsx")),
     getProps: () => ({ match: matchSummaryFsSample }),
   },
   {
     id: "top-batter",
     label: "Top Batter",
-    component: TopBatter,
+    component: lazy(() => import("./full-screen/TOP_BATTER.jsx")),
     getProps: () => ({ match: topBatterSample }),
   },
   {
     id: "top-bowler",
     label: "Top Bowler",
-    component: TopBowler,
+    component: lazy(() => import("./full-screen/TOP_BOWLER.jsx")),
     getProps: () => ({ match: topBowlerSample }),
   },
 ];
@@ -931,26 +840,15 @@ export const controllerCatalog = [
   })),
 ];
 
-/**
- * Resolve a controller component for dynamic rendering.
- * @param {string} category
- * @param {string} id
- */
-export function getController(category, id) {
-  return controllerRegistry[category]?.[id] ?? null;
-}
+/** @type {Map<string, (typeof controllerCatalog)[number]>} */
+const controllerEntryByKey = new Map(
+  controllerCatalog.map((entry) => [`${entry.category}/${entry.id}`, entry])
+);
 
-/** @param {string} category @param {string} id */
-export function getControllerEntry(category, id) {
-  return (
-    controllerCatalog.find(
-      (entry) => entry.category === category && entry.id === id
-    ) ?? null
-  );
-}
+/** @type {ReturnType<typeof buildControllersByCategory>|null} */
+let controllersByCategoryCache = null;
 
-/** Controllers grouped by category (includes empty categories for the panel). */
-export function getControllersByCategory() {
+function buildControllersByCategory() {
   return CONTROLLER_CATEGORIES.map((category) => {
     const controllers = controllerCatalog.filter(
       (entry) => entry.category === category
@@ -972,6 +870,28 @@ export function getControllersByCategory() {
       groups,
     };
   });
+}
+
+/**
+ * Resolve a controller component for dynamic rendering.
+ * @param {string} category
+ * @param {string} id
+ */
+export function getController(category, id) {
+  return controllerRegistry[category]?.[id] ?? null;
+}
+
+/** @param {string} category @param {string} id */
+export function getControllerEntry(category, id) {
+  return controllerEntryByKey.get(`${category}/${id}`) ?? null;
+}
+
+/** Controllers grouped by category (includes empty categories for the panel). */
+export function getControllersByCategory() {
+  if (!controllersByCategoryCache) {
+    controllersByCategoryCache = buildControllersByCategory();
+  }
+  return controllersByCategoryCache;
 }
 
 /** Output URL for a catalog entry. */

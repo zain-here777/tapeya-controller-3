@@ -301,6 +301,11 @@ Isolation rules:
   - Keep all code inside src/themes/${themeId}/
   - Only import from src/shared/ for theme-agnostic utilities
   - Never import from other theme folders
+
+Performance notes (inherited from theme4):
+  - Controllers use React.lazy() — keep new ones lazy in the registry
+  - loadStyles should use Promise.all for parallel CSS imports
+  - Theme modules are cached by the shared registry; avoid eager cross-theme imports
 `);
 }
 

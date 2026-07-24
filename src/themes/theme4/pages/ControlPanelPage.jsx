@@ -1,13 +1,12 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ThemeSelector from "../../../app/components/ThemeSelector.jsx";
 import {
   readActiveController,
   subscribeActiveController,
   writeActiveController,
 } from "../../../shared/controller/activeController.js";
-import { buildOutputPath, readThemeFromSearch } from "../../../shared/utils/outputPath.js";
-import { writeActiveTheme } from "../../activeTheme.js";
+import { buildOutputPath } from "../../../shared/utils/outputPath.js";
 import { useTheme } from "../../ThemeProvider.jsx";
 import ControllerSelectButton from "../components/ControllerSelectButton.jsx";
 import BroadcastPageShell from "../layouts/BroadcastPageShell.jsx";
@@ -49,15 +48,9 @@ function ControllerButtonRow({ controllers, active, onSelect }) {
 /** Theme 4 control panel — fully self-contained within theme4. */
 export default function Theme4ControlPanelPage() {
   const { themeId } = useTheme();
-  const [searchParams] = useSearchParams();
   const [active, setActive] = useState(() => readActiveController());
 
   useEffect(() => subscribeActiveController(setActive), []);
-
-  useEffect(() => {
-    const themeFromUrl = readThemeFromSearch(searchParams);
-    if (themeFromUrl) writeActiveTheme(themeFromUrl);
-  }, [searchParams]);
 
   const groups = useMemo(() => getControllersByCategory(), []);
   const rowSize = LOWER_THIRD_PANEL_ROW_SIZE;

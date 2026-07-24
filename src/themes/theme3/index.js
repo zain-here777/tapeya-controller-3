@@ -1,7 +1,5 @@
+import { lazy } from "react";
 import { createThemeModule } from "../contract.js";
-import ControlPanelPage from "./pages/ControlPanelPage.jsx";
-import OutputPage from "./pages/OutputPage.jsx";
-import ControllerHost from "./controllers/ControllerHost.jsx";
 import {
   controllerCatalog,
   controllerOutputPath,
@@ -10,6 +8,10 @@ import {
   getControllersByCategory,
   LOWER_THIRD_PANEL_ROW_SIZE,
 } from "./controllers/registry.js";
+
+const ControlPanelPage = lazy(() => import("./pages/ControlPanelPage.jsx"));
+const OutputPage = lazy(() => import("./pages/OutputPage.jsx"));
+const ControllerHost = lazy(() => import("./controllers/ControllerHost.jsx"));
 
 async function loadStyles() {
   await import("./styles/index.css");

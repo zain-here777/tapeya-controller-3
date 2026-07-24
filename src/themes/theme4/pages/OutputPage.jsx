@@ -6,7 +6,6 @@ import {
   writeActiveController,
 } from "../../../shared/controller/activeController.js";
 import { readThemeFromSearch } from "../../../shared/utils/outputPath.js";
-import { writeActiveTheme } from "../../activeTheme.js";
 import { useTheme } from "../../ThemeProvider.jsx";
 import BroadcastPageShell from "../layouts/BroadcastPageShell.jsx";
 import ControllerHost from "../controllers/ControllerHost.jsx";
@@ -16,8 +15,8 @@ import { controllerCatalog, getControllerEntry } from "../controllers/registry.j
 /** Theme 4 output page — fully self-contained within theme4. */
 export default function Theme4OutputPage() {
   const { category: paramCategory, id: paramId } = useParams();
-  const [searchParams] = useSearchParams();
-  const { setThemeId } = useTheme();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { themeId } = useTheme();
 
   const [active, setActive] = useState(() => {
     if (paramCategory && paramId) {
@@ -26,13 +25,19 @@ export default function Theme4OutputPage() {
     return readActiveController() ?? null;
   });
 
+  // Keep the URL in sync with the shared theme store (store → URL only).
+  // Never write URL → store here — that fights the control-panel dropdown.
   useEffect(() => {
-    const themeFromUrl = readThemeFromSearch(searchParams);
-    if (themeFromUrl) {
-      writeActiveTheme(themeFromUrl);
-      setThemeId(themeFromUrl);
-    }
-  }, [searchParams, setThemeId]);
+    if (readThemeFromSearch(searchParams) === themeId) return;
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        next.set("theme", themeId);
+        return next;
+      },
+      { replace: true }
+    );
+  }, [themeId, searchParams, setSearchParams]);
 
   useEffect(() => {
     if (paramCategory && paramId) {

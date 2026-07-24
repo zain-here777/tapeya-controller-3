@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useTheme } from "../themes/ThemeProvider.jsx";
 import AppLoadingShell from "../app/components/AppLoadingShell.jsx";
 
@@ -11,5 +11,9 @@ export default function ControlPanelPage() {
   }
 
   const Page = themeModule.ControlPanelPage;
-  return <Page key={themeModule.id} />;
+  return (
+    <Suspense fallback={<AppLoadingShell message="Loading control panel…" />}>
+      <Page key={themeModule.id} />
+    </Suspense>
+  );
 }

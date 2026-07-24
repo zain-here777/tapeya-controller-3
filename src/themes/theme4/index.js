@@ -1,7 +1,5 @@
+import { lazy } from "react";
 import { createThemeModule } from "../contract.js";
-import ControlPanelPage from "./pages/ControlPanelPage.jsx";
-import OutputPage from "./pages/OutputPage.jsx";
-import ControllerHost from "./controllers/ControllerHost.jsx";
 import {
   controllerCatalog,
   controllerOutputPath,
@@ -12,12 +10,18 @@ import {
 } from "./controllers/registry.js";
 import { theme4Config } from "./config/theme.config.js";
 
+const ControlPanelPage = lazy(() => import("./pages/ControlPanelPage.jsx"));
+const OutputPage = lazy(() => import("./pages/OutputPage.jsx"));
+const ControllerHost = lazy(() => import("./controllers/ControllerHost.jsx"));
+
 async function loadStyles() {
-  await import("./styles/theme4.css");
-  await import("./styles/motion.css");
-  await import("./FullScreenTransition/styles/fst.css");
-  await import("./Breaks/styles/breaks.css");
-  await import("./Charts/styles/charts.css");
+  await Promise.all([
+    import("./styles/theme4.css"),
+    import("./styles/motion.css"),
+    import("./FullScreenTransition/styles/fst.css"),
+    import("./Breaks/styles/breaks.css"),
+    import("./Charts/styles/charts.css"),
+  ]);
 }
 
 export default createThemeModule({

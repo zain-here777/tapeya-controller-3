@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { getController } from "./registry.js";
 
 /**
  * Renders a registered controller by category + id.
- * Use this when a control-panel button selects which GFX to show.
+ * Controllers are React.lazy() boundaries so only the active graphic loads.
  *
  * @param {string} category
  * @param {string} id
@@ -19,15 +19,21 @@ export default function ControllerHost({ category, id, ...props }) {
     return null;
   }
 
+  const graphic = (
+    <Suspense fallback={null}>
+      <Controller {...props} />
+    </Suspense>
+  );
+
   if (category === "lower-third" || category === "tour-hit") {
     return (
       <LowerThirdEnter animKey={`${category}/${id}`}>
-        <Controller {...props} />
+        {graphic}
       </LowerThirdEnter>
     );
   }
 
-  return <Controller {...props} />;
+  return graphic;
 }
 
 /**

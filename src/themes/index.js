@@ -6,6 +6,8 @@ export {
   getThemeDefinition,
   resolveThemeId,
   loadThemeModule,
+  getCachedThemeModule,
+  preloadThemesInIdle,
 } from "./registry.js";
 export {
   readActiveTheme,

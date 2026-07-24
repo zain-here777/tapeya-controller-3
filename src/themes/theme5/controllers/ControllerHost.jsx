@@ -1,0 +1,168 @@
+import React, { Suspense, useEffect, useState } from "react";
+import { getController } from "./registry.js";
+
+/**
+ * Theme 5 controller host — isolated from other themes.
+ * Controllers are React.lazy() boundaries so only the active graphic loads.
+ */
+export default function ControllerHost({ category, id, ...props }) {
+  const Controller = getController(category, id);
+
+  if (!Controller) {
+    if (import.meta.env.DEV) {
+      console.warn(`[Theme5 ControllerHost] Unknown controller: ${category}/${id}`);
+    }
+    return null;
+  }
+
+  const graphic = (
+    <Suspense fallback={null}>
+      <Controller {...props} />
+    </Suspense>
+  );
+
+  if (category === "lower-third" || category === "tour-hit") {
+    return (
+      <LowerThirdEnter animKey={`${category}/${id}`}>
+        {graphic}
+      </LowerThirdEnter>
+    );
+  }
+
+  if (category === "full-screen-transition" || category === "breaks") {
+    return (
+      <FullScreenTransitionEnter animKey={`${category}/${id}`}>
+        {graphic}
+      </FullScreenTransitionEnter>
+    );
+  }
+
+  if (category === "full-screen") {
+    if (id === "top-batter" || id === "top-bowler") {
+      return (
+        <TournamentEnter animKey={`${category}/${id}`}>
+          {graphic}
+        </TournamentEnter>
+      );
+    }
+    return (
+      <FullScreenTransitionEnter animKey={`${category}/${id}`}>
+        {graphic}
+      </FullScreenTransitionEnter>
+    );
+  }
+
+  if (category === "tournaments") {
+    return (
+      <TournamentEnter animKey={`${category}/${id}`}>
+        {graphic}
+      </TournamentEnter>
+    );
+  }
+
+  if (category === "charts") {
+    return (
+      <ChartEnter animKey={`${category}/${id}`}>
+        {graphic}
+      </ChartEnter>
+    );
+  }
+
+  if (category === "player-stats") {
+    if (String(id).endsWith("-lt")) {
+      return (
+        <LowerThirdEnter animKey={`${category}/${id}`}>
+          {graphic}
+        </LowerThirdEnter>
+      );
+    }
+    return (
+      <FullScreenTransitionEnter animKey={`${category}/${id}`}>
+        {graphic}
+      </FullScreenTransitionEnter>
+    );
+  }
+
+  return graphic;
+}
+
+function LowerThirdEnter({ animKey, children }) {
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    setDone(false);
+  }, [animKey]);
+
+  return (
+    <div className={`t5-lt-enter-shell${done ? " t5-lt-enter-shell--done" : ""}`}>
+      <div key={animKey} className="t5-lt-enter-from-bottom" onAnimationEnd={() => setDone(true)}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/** Fade the full-screen transition shell when switching controllers. */
+function FullScreenTransitionEnter({ animKey, children }) {
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    setDone(false);
+  }, [animKey]);
+
+  return (
+    <div
+      className={`t5-fst-enter-shell${done ? " t5-fst-enter-shell--done" : ""}`}
+    >
+      <div key={animKey} className="t5-fst-enter" onAnimationEnd={() => setDone(true)}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/** Cascade reveal for tournament boards — distinct from FST/Breaks fade. */
+function TournamentEnter({ animKey, children }) {
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    setDone(false);
+  }, [animKey]);
+
+  return (
+    <div className={`t5-tlb-enter-shell${done ? " t5-tlb-enter-shell--done" : ""}`}>
+      <div
+        key={animKey}
+        className="t5-tlb-enter"
+        onAnimationEnd={(event) => {
+          if (event.target === event.currentTarget) setDone(true);
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/** Page fade + internal stagger handled in charts.css */
+function ChartEnter({ animKey, children }) {
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    setDone(false);
+  }, [animKey]);
+
+  return (
+    <div className={`t5-chart-enter-shell${done ? " t5-chart-enter-shell--done" : ""}`}>
+      <div
+        key={animKey}
+        className="t5-chart-enter"
+        onAnimationEnd={(event) => {
+          if (event.target === event.currentTarget) setDone(true);
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}

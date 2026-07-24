@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useTheme } from "../themes/ThemeProvider.jsx";
 import AppLoadingShell from "../app/components/AppLoadingShell.jsx";
 
@@ -11,5 +11,9 @@ export default function OutputPage() {
   }
 
   const Page = themeModule.OutputPage;
-  return <Page key={themeModule.id} />;
+  return (
+    <Suspense fallback={<AppLoadingShell message="Loading output…" />}>
+      <Page key={themeModule.id} />
+    </Suspense>
+  );
 }
