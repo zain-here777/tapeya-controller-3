@@ -36,13 +36,10 @@ export default function TournamentNameLowerThird({
       <div className="mb-[calc(45px*var(--t4-scale))] w-full px-[calc(210px*var(--t4-scale))]">
         <div className="relative flex h-[var(--t4-bar-height)] w-full items-stretch overflow-hidden shadow-[0_-2px_10px_rgba(0,0,0,0.12)]">
           <div
-            className="pointer-events-none absolute inset-y-0 left-0 z-0 w-1/2"
-            style={{ backgroundColor: teamAColor }}
-            aria-hidden="true"
-          />
-          <div
-            className="pointer-events-none absolute inset-y-0 right-0 z-0 w-1/2"
-            style={{ backgroundColor: teamBColor }}
+            className="pointer-events-none absolute inset-0 z-0"
+            style={{
+              backgroundImage: `linear-gradient(90deg, ${teamAColor} 0%, ${teamAColor} 28%, ${teamBColor} 72%, ${teamBColor} 100%)`,
+            }}
             aria-hidden="true"
           />
 
